@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>INFOEVENTZ-DASHBOARD</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'vendors/feather/feather.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css' %}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{% static 'vendors/datatables.net-bs4/dataTables.bootstrap4.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'js/select.dataTables.min.css' %}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css' %}">
+  <!-- endinject -->
+<!-- chart link start -->
+<link href="https://canvasjs.com/assets/css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
+<!-- chart link end -->
+  <link rel="shortcut icon" href="{% static 'images/info_logo.png' %}" />
+  <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+  
+  <style>
+  @font-face {
+  font-family: 'AcuminCondensedSemiBold';
+  src: url('{% static 'fonts/AcuminVariableConcept.otf' %}') format('truetype'); /* Adjust the path as needed */
+  font-weight: 600; /* Adjust to match the font's actual weight */
+  font-style: normal; /* Adjust if the font has a specific style */
+}
+body
+{
+      font-family: 'AcuminCondensedSemiBold' !important;
+}
+    .daz_menu:hover
+  {
+    color: #1CAFA0 ;
+    text-decoration: none;
+  }
+  
+  .img-ss
+  {
+    width: 10px;
+    height: 10px;
+  }
+  #settings-trigger
+  {
+    background-color: green !important;
+    color: white !important;
+    cursor: pointer;
+  }
+  #settings-trigger:hover
+  {
+    background-color: white !important;
+  
+    cursor: pointer;
+  }
+
+  .ti-face-smile:hover
+  {
+    color: green !important;
+    cursor: pointer;
+    font-size: 30px !important;
+  }
+</style>
+  
+
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    {% include 'includes/nav.html' %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+    
+
+      
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+      <h3 class="text-center">REPORT</h3>
+
+      <div class="row">
+        
+<div class="col-md-12">
+  <button type="button" class="float-right mb-3 btn btn-primary exportExcel">EXPORT AS EXCEL</button>
+  <table class="table table-bordered">
+   
+      <tr style="background-color: #1CAFA0;">
+        <th class="text-center"  rowspan="2">Print Report</th>
+        <th class="text-center report-location-name" scope="col" colspan="4">{{location.name}}</th>
+
+      </tr>
+
+
+      <tr >
+        <td style="font-weight: bold !important;">ENTRIES</td>
+        <td>ACCEPTED</td>
+        <td>REJECT</td>
+        <td>PRINTED</td>
+      </tr>
+      <!-- <tr class="reg-table">
+        <td class="reg-table-name">EVENT</td>
+        <td class="entries">{{report_data.event.total_entries}}</td>
+        <td class="accepted">{{report_data.event.total_accepted}}</td>
+        <td class="rejected">{{report_data.event.total_rejected}}</td>
+        <td class="printed">{{report_data.event.total_printed_count}}</td>
+      </tr> -->
+      <tr  class="reg-table">
+        <td class="reg-table-name">BUILD</td>
+        <td class="entries">{{report_data.build.total_entries}}</td>
+        <td class="accepted">{{report_data.build.total_accepted}}</td>
+        <td class="rejected">{{report_data.build.total_rejected}}</td>
+        <td class="printed">{{report_data.build.total_printed_count}}</td>
+      </tr>
+      <!-- <tr  class="reg-table">
+        <td class="reg-table-name">VAPP</td>
+        <td class="entries">{{report_data.vapp.total_entries}}</td>
+        <td class="accepted">{{report_data.vapp.total_accepted}}</td>
+        <td class="rejected">{{report_data.vapp.total_rejected}}</td>
+        <td class="printed">{{report_data.vapp.total_printed_count}}</td>
+      </tr> -->
+
+  </table>
+</div>
+      </div>
+   
+   
+        </div>
+
+
+        <div class="content-wrapper">
+          <h3 class="text-left" style="display: inline;">CATEGORY WISE REPORT</h3>
+        <select class="change-category-table-dropdown d-none"  style="display: inline; float: right; border:none;font-size: larger;">
+          <option value="event">EVENT</option>
+          <option value="build">BUILD</option>
+          <option value="vapp" >VAPP</option>
+        </select>
+    <!-- event  -->
+          <div class="row mt-2 category-row event-category-row d-none">
+            <div class="col-md-12">
+              <table class="table table-bordered">
+              
+                  <tr style="background-color: #1CAFA0;">
+                    <th class="text-center cat-table-name"  rowspan="2">EVENT</th>
+                    <th class="text-center" scope="col" colspan="4">{{location.name}}</th>
+            
+                  </tr>
+            
+            
+                  <tr >
+                    <td style="font-weight: bold !important;">ENTRIES</td>
+                    <td>ACCEPTED</td>
+                    <td>REJECT</td>
+                    <td>PRINTED</td>
+                  </tr>
+                  {% for cat in  report_data.event.categorys %}
+                  <tr class="cat-row">
+                    <td class="cat-name">{{cat.name}}</td>
+                    <td class="cat-entries">{{cat.total_entries}}</td>
+                    <td class="cat-accepted">{{cat.total_accepted}}</td>
+                    <td class="cat-rejected">{{cat.total_rejected}}</td>
+                    <td class="cat-printed">{{cat.total_printed_count}}</td>
+                  </tr>
+                  {% endfor %}
+            
+              </table>
+            </div>
+          </div>
+       
+          <!-- build -->
+          <div class="row mt-2 category-row build-category-row ">
+            <div class="col-md-12">
+              <table class="table table-bordered">
+              
+                  <tr style="background-color: #1CAFA0;">
+                    <th class="text-center cat-table-name"  rowspan="2">BUILD</th>
+                    <th class="text-center" scope="col" colspan="4">{{location.name}}</th>
+            
+                  </tr>
+            
+            
+                  <tr >
+                    <td style="font-weight: bold !important;">ENTRIES</td>
+                    <td>ACCEPTED</td>
+                    <td>REJECT</td>
+                    <td>PRINTED</td>
+                  </tr>
+                  {% for cat in  report_data.build.categorys %}
+                  <tr class="cat-row">
+                    <td class="cat-name">{{cat.name}}</td>
+                    <td class="cat-entries">{{cat.total_entries}}</td>
+                    <td class="cat-accepted">{{cat.total_accepted}}</td>
+                    <td class="cat-rejeceted">{{cat.total_rejected}}</td>
+                    <td class="cat-printed">{{cat.total_printed_count}}</td>
+                  </tr>
+                  {% endfor %}
+            
+              </table>
+            </div>
+          </div>
+       
+ 
+            <!-- vapp -->
+            <div class="row mt-2 category-row vapp-category-row d-none ">
+              <div class="col-md-12">
+                <table class="table table-bordered">
+                
+                    <tr style="background-color: #1CAFA0;">
+                      <th class="text-center cat-table-name"  rowspan="2">VAPP</th>
+                      <th class="text-center" scope="col" colspan="4">{{location.name}}</th>
+              
+                    </tr>
+              
+              
+                    <tr >
+                      <td style="font-weight: bold !important;">ENTRIES</td>
+                      <td>ACCEPTED</td>
+                      <td>REJECT</td>
+                      <td>PRINTED</td>
+                    </tr>
+                    {% for cat in  report_data.vapp.categorys %}
+                    <tr class="cat-row">
+                      <td class="cat-name">{{cat.name}}</td>
+                      <td class="cat-entries">{{cat.total_entries}}</td>
+                      <td class="cat-accepted">{{cat.total_accepted}}</td>
+                      <td class="cat-rejeceted">{{cat.total_rejected}}</td>
+                      <td class="cat-printed">{{cat.total_printed_count}}</td>
+                    </tr>
+                    {% endfor %}
+              
+                </table>
+              </div>
+            </div>
+         
+       
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023.<a href="https://www.infomeuae.com/" target="_blank">INFOME TECHNOLOGIES LLC</a>. All rights reserved.</span>
+
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+
+    
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="{% static 'vendors/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'vendors/datatables.net/jquery.dataTables.js' %}"></script>
+  <script src="{% static 'vendors/datatables.net-bs4/dataTables.bootstrap4.js' %}"></script>
+  <script src="{% static 'js/dataTables.select.min.js' %}"></script>
+
+  <!-- End plugin js for this page -->
+
+  <script src="https://canvasjs.com/assets/script/jquery-ui.1.11.2.min.js"></script>
+  <script src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
+
+
+  <!-- chart js  -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <!-- inject:js -->
+  <script src="{% static 'js/off-canvas.js' %}"></script>
+  <script src="{% static 'js/hoverable-collapse.js' %}"></script>
+  <script src="{% static 'js/template.js' %}"></script>
+  <script src="{% static 'js/settings.js' %}"></script>
+  <script src="{% static 'js/todolist.js' %}"></script>
+
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{% static 'js/dashboard.js' %}"></script>
+  <script src="{% static 'js/Chart.roundedBarCharts.js' %}"></script>
+  <!-- End custom js for this page-->
+
+  <script src="{% static 'scripts/location-mapping.js' %}?update=1"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+
+<script>
+  const api='8e87bcb2958b1d16235d0f3d430eda69'
+
+
+window.addEventListener('load', () => {
+
+  let long;
+  let lat;
+
+
+
+  // Accesing Geolocation of User
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      // Storing Longitude and Latitude in variables
+      let long = position.coords.longitude;
+      let  lat = position.coords.latitude;
+      const base = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${api}&units=metric`;
+      console.log(base)
+      // Using fetch to get data
+      fetch(base)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          const { temp } = data.main;
+          const country=data.sys.country
+          const place = data.name;
+          const { description, icon } = data.weather[0];
+          $('#place').html(place)
+          $('#country').html(country)
+          $('.temp').html(temp.toFixed())
+          $('#wh-desc').html(description)
+          document.getElementById('wh-icon').src=`http://openweathermap.org/img/wn/${icon}@2x.png`
+   
+        });
+    });
+  }
+});
+
+ $('.change-category-table-dropdown').change(function(){
+  $('.category-row').addClass('d-none')
+
+  $(`.${$(this).val()}-category-row`).removeClass('d-none')
+
+
+
+ })
+
+ 
+
+</script>
+
+  
+
+
+<script>
+
+
+$('.exportExcel').click(async function () {
+
+  const location_name=$('.report-location-name').text()
+  const customData=await getExcelData()
+  
+
+    //doownload
+    const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.aoa_to_sheet(customData);
+
+    // Add the worksheet to the workbook
+    XLSX.utils.book_append_sheet(workbook, worksheet, "CustomData");
+
+    // Generate a data URL for the workbook
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const excelData = new Blob([excelBuffer], { type: 'application/octet-stream' });
+    const excelUrl = URL.createObjectURL(excelData);
+
+    // Create a download link and trigger the download
+    const downloadLink = document.createElement('a');
+    downloadLink.href = excelUrl;
+    downloadLink.download = `${location_name}-REPORT-${new Date().toLocaleDateString()}.xlsx`;
+    downloadLink.click();
+
+})
+
+function getExcelData(){
+
+  const location_name=$('.report-location-name').text()
+  
+  const customData=([[location_name+'-REPORT-'+new Date().toLocaleDateString()]])
+  customData.push([[]])
+  customData.push(['TABLE','ENTRIES','ACCEPTED','REJECTED','PRINTED'])
+  $('.reg-table').each(function(){
+    
+    let table_name=$(this).find('.reg-table-name').text()
+    let entries=$(this).find('.entries').text()
+    let accepted=$(this).find('.accepted').text()
+    let rejected=$(this).find('.rejected').text()
+    let printed=$(this).find('.printed').text()
+
+    customData.push([table_name,entries,accepted,rejected,printed])
+  })
+  customData.push([[]])
+  customData.push([['CATEGORY WISE REPORT']])
+  customData.push([[]])
+  $('.category-row').each(function(){
+    let table_name=$(this).find('.cat-table-name').text()
+
+    customData.push(['','',table_name,'',''])
+    customData.push(['CATEGORY NAME','ENTRIES','ACCEPTED','REJECTED','PRINTED'])
+
+    $(this).find('.cat-row').each(function(){
+      let cat_name=$(this).find('.cat-name').text()
+      let cat_entries=$(this).find('.cat-entries').text()
+      let cat_accepted=$(this).find('.cat-accepted').text()
+      let cat_rejected=$(this).find('.cat-rejected').text()
+      let cat_printed=$(this).find('.cat-printed').text()
+      customData.push([cat_name,cat_entries,cat_accepted,cat_rejected,cat_printed])
+    })
+
+    customData.push([[]])
+
+  })
+    return customData
+
+
+  
+
+
+}
+
+  
+</script>
+</body>
+
+</html>
+

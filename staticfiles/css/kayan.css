@@ -1,0 +1,379 @@
+
+
+body{
+    font-family: bentonsans !important;
+    overflow-x: hidden !important;
+}
+.back-img-1024
+{
+    display:none;
+}
+.btn-submit
+{
+    background-color: #97c8bc !important;
+    border: 1px solid #97c8bc !important;
+}
+.btn-submit:hover
+{
+    background-color: #87c7b7 !important;
+    border: 1px solid #87c7b7 !important;
+}
+.btn-rst
+{
+    background-color: #716ba3 !important;
+    border: 1px solid #716ba3 !important;
+}
+
+.btn-rst:hover
+{
+    background-color: #655ea8 !important;
+    border: 1px solid #655ea8 !important;
+}
+
+label
+{
+    letter-spacing: 1.5px;
+    
+}
+input{
+    background-color: rgb(255, 255, 255) !important;
+    border-color: rgba(255, 255, 255, 0) !important;
+    color: rgba(0, 0, 0, 0.959) !important;
+    letter-spacing: 2px;
+    font-weight: bold;
+   
+}
+select{
+    background-color: rgb(255, 255, 255) !important;
+    border-color: rgba(255, 255, 255, 0) !important;
+    color: rgba(0, 0, 0, 0.959) !important;
+    letter-spacing: 2px;
+    font-weight: bold;
+    
+}
+.reg-div
+{
+    position: absolute;
+    top:250px;
+}
+.modal-body .form-control
+{
+background-color: #8b78ae94 !important;
+}
+.registration-card
+{
+    position: relative; 
+    
+    top: 230px;
+}
+
+
+
+
+.background
+    {
+      
+    }
+
+    .background-img
+    {
+      width: 100%;
+      height:auto;
+      display: block;
+    }
+    .kayan_build
+    {
+        background-color: #97c8bc; 
+        padding: 10px 50px 1px 50px;
+         border-radius: 20px; 
+         width: 100%;
+         margin-top: 10px;
+    }
+    .kayan_build:hover
+    {
+        background-color: #77dfc5; 
+        cursor:pointer;
+    }
+    .kayan_build p
+    {
+        font-size: 35px;
+       padding-top: 3px;
+        color: #8b78ae;
+    }
+    .kayan_reg
+    {
+        background-color: #97c8bc;  
+        padding: 10px 50px 1px 50px;
+         border-radius: 20px;
+         width: 100%;
+         margin-top: 10px;
+    }
+    .kayan_reg:hover
+    {
+        background-color:  #77dfc5; 
+        cursor: pointer;
+    }
+    .kayan_reg p{
+        font-size: 35px;
+        padding-top: 3px;
+        color: #8b78ae;
+      
+    }
+    .background-img-mob
+    {
+        display: none;
+    }
+
+    @media (min-width: 250px) and (max-width: 580px) {
+
+        .registration-card
+        {
+            position: absolute; 
+        top: 200px;
+        }
+
+
+        .kayan_build p
+        {
+            font-size: 25px;
+            color: #8b78ae;
+        }
+        .kayan_reg p{
+            font-size: 25px;
+            color: #8b78ae;
+        }
+       
+        .kayan_build
+        {
+            background-color: #97c8bc; 
+            padding: 10px 10px 1px 10px;
+             border-radius: 20px; 
+             width: 100%;
+             margin-top: 10px;
+        }
+        .background-img{
+            display: none;
+        }
+        .background-img-mob
+        {
+            width:100%;
+            height: -webkit-fill-available;
+            display: block;
+        }
+        .reg-div
+        {
+            padding: 5px;
+        }
+
+    }
+
+    @media (min-width: 250px) and (max-width: 348px) 
+    {
+
+        .kayan_reg p{
+            font-size: 20px;
+            color: #8b78ae;
+        }
+
+        .kayan_build p
+        {
+            font-size: 20px;
+            color: #8b78ae;
+        }
+
+        .background-img-mob
+        {
+            width:100%;
+            height: -webkit-fill-available;
+            display: block;
+        }
+        .reg-div
+{
+    position: absolute;
+    top:150px;
+}
+
+
+
+
+    }
+
+
+    @media (min-width: 1270px) and (max-width: 2560px) 
+    {
+
+.reg-div
+{
+    top: 480px;
+}
+.kayan_build p
+{
+    font-size: 70px;
+}
+.kayan_reg p
+{
+    font-size: 70px;
+}
+        
+    }
+
+    @media (min-width: 1242px) and (max-width: 2056px) 
+    {
+
+
+        .reg-div
+        {
+            top: 350px;
+        }
+
+    }
+
+    @media (min-width: 1025px) and (max-width: 1440px) 
+    {
+        .reg-div
+        {
+            top: 300px;
+        }
+        
+
+        .background-img
+        {
+          width: 100%;
+          height:auto;
+          display: block;
+        }
+        .kayan_build
+        {
+            background-color: #97c8bc; 
+            padding: 10px 50px 1px 50px;
+             border-radius: 20px; 
+             width: 100%;
+             margin-top: 10px;
+        }
+        .kayan_build:hover
+        {
+            background-color: #77dfc5; 
+            cursor:pointer;
+        }
+        .kayan_build p
+        {
+            font-size: 35px;
+            color: #8b78ae;
+        }
+        .kayan_reg
+        {
+            background-color: #97c8bc;  
+            padding: 10px 50px 1px 50px;
+             border-radius: 20px;
+             width: 100%;
+             margin-top: 10px;
+        }
+        .kayan_reg:hover
+        {
+            background-color:  #77dfc5; 
+            cursor: pointer;
+        }
+        .kayan_reg p{
+            font-size: 35px;
+            color: #8b78ae;
+        }
+        .background-img-mob
+        {
+            display: none;
+        }
+
+
+
+    }
+
+
+    @media (min-width: 769px) and (max-width: 1024px) 
+    {
+        .background-img
+        {
+            display: none;
+
+        }
+        .back-img-1024
+        {
+            display: block !important;
+            position: absolute !important;
+            width: 100%;
+            height: -webkit-fill-available;
+        }
+        .reg-div
+        {
+            top: 180px;
+        }
+
+        .kayan_build p
+        {
+            font-size: 25px;
+        }
+
+        .kayan_reg p
+        {
+            font-size: 25px;
+        }
+
+
+    }
+
+    @media (min-width: 450px) and (max-width: 768px) 
+
+
+    {
+        .background-img
+        {
+            display: none;
+
+        }
+
+        .back-img-1024
+        {
+            display: block !important;
+            position: absolute !important;
+            width: 100%;
+            height: -webkit-fill-available;
+        }
+        .reg-div
+        {
+            top: 140px;
+        }
+        .registration-card
+        {
+            top: 130px !important;
+        }
+
+        .kayan_build p
+        {
+            font-size: 20px;
+        }
+
+        .kayan_reg p
+        {
+            font-size: 20px;
+        }
+
+        .kayan_build
+        {
+            margin-top: 0px !important;
+        }
+
+
+    }
+    .form-check-input:checked[type=radio] {
+        
+        --bs-form-check-bg-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='%2397c8bc'/></svg>") 
+
+    }
+
+
+    @media (min-width: 1445px) and (max-width: 2560px) 
+    {
+        .registration-card
+        {
+            top:500px;
+        }
+    }
+

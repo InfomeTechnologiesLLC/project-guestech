@@ -1,0 +1,151 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/kayan/kayan_fav.png'  %}">
+    <title>KAYAN WELLNESS CENTER</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/kayan_demo.css'  %}?update=m" rel="stylesheet">
+
+<style>
+      @font-face {
+    font-family: bentonsans;
+    src: url('{% static "fonts/BentonSans ExtraComp Regular Regular.otf" %}') format('opentype');
+   
+
+  }
+  
+</style>
+
+
+</head>
+<body style="background-color: #8B78AE;">
+
+
+    <!-- Main Content Section -->
+    <main class="p-2">
+
+        <div class="row mob_View">
+            <div class="col-6">
+                <div class="p-4 place" >
+                <h5 class="text-white">AL FAHID ISLAND</h5>
+               <h5 class="text-white">ABU DHABI</h5>
+            </div>
+            </div> 
+            <div class="col-6 ">
+                <div class="p-4 time" style="">
+            <h5 class="text-white">17-21 APRIL</h5>
+            <h5 class="text-white float-right">2024</h5>
+            </div>
+            </div>
+            <div class="col-12 ">
+              <a href="https://kayanwellnessfestival.infoeventz.com/"></a>
+                <div class="d-flex justify-content-center">
+                  
+               <img class="img-fluid mob_main_logo"  src="{% static 'images/kayan/root-demo/kayan_up.png' %}">
+      
+              </div>
+            </a>
+        </div>
+
+
+        </div>
+
+
+        <div class="row desktop_View">
+            <div class=" col-3 col-md-3">
+                <div class="p-4 place" >
+                <h5 class="text-white">AL FAHID ISLAND</h5>
+               <h5 class="text-white">ABU DHABI</h5>
+            </div>
+            </div> 
+            <div class="col-6 col-md-6">
+
+              <a class="d-flex justify-content-center" href="https://kayanwellnessfestival.infoeventz.com/">
+               <img class="img-fluid" style="width: 60%;" src="{% static 'images/kayan/root-demo/kayan_up.png' %}">
+         </a>
+     
+              </div>
+
+<div class="col-3 col-md-3">
+    <div class="p-4 time" style="">
+<h5 class="text-white">17-21 APRIL</h5>
+<h5 class="text-white float-right">2024</h5>
+</div>
+</div>
+
+        </div>
+
+
+
+
+
+        <div class="row" style="position: relative; z-index: 2000; font-family:bentonsans !important ;">
+            <div class="d-flex justify-content-center">
+          <div class="col-6">
+            <div class="d-flex justify-content-center">
+            <div class="reg-div">
+             
+              <!-- <div class="kayan_build mt-4 div-button" href="{% url 'build-registration' %}">
+              <p class="text-center">Register For Build/Dismantle</p>
+              </div> -->
+          
+              <div class="kayan_reg mt-4 div-button" href="{% url 'event-registration' %}">
+                <p class="text-center">Register For Event Pass</p>
+                </div>
+          
+                <!-- <div class="kayan_reg mt-4 div-button" href="{% url 'vapp-registration' %}">
+                  <p class="text-center">Register For Vehicle Pass</p>
+                  </div> -->
+          
+              </div>
+            </div>
+              </div>
+          </div>
+          </div>
+
+
+
+<div class="row" style="position: absolute; bottom: 0px;">
+<div class="col-6 p-4">
+<img class="img-fluid footer-img" src="{% static 'images/kayan/root-demo/abu_logo.png' %}" >
+</div>
+
+<div class="col-6 p-4">
+    <img class="img-fluid footer-img-right" src="{% static 'images/kayan/root-demo/link_logo.png' %}" >
+</div>
+</div>
+
+
+<div class="" style="position: absolute; bottom: 0px; width: 100%;">
+    <div class="d-flex justify-content-center">
+<img class="img-fluid bg-img-main" src="{% static 'images/kayan/root-demo/kayan logo shape-3-01.png' %}" style="">
+</div>
+</div>
+
+
+
+    </main>
+
+    <!-- Footer Section -->
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $('.div-button').each((i,elm)=>{
+          let _link=$(elm).attr('href')
+          $(elm).click(()=>{window.location.href=_link})
+        })
+      </script>
+</body>
+</html>

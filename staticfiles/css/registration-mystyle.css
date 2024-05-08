@@ -1,0 +1,446 @@
+   body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      
+      color: #fff; /* Set text color to white for better visibility */
+      position: relative;
+     
+
+    }
+
+    .logo_img
+    {
+      margin-left: 0px;
+    }
+
+
+/* rewrite css style start */
+.table
+{
+  --bs-table-bg:none;
+}
+
+
+/* rewrite css style end */
+
+/* event success message start */
+
+.evnt_scs_card
+{
+  margin-top:100px;
+  padding:50px; 
+  background: rgb(53, 135, 190) !important;
+  border-bottom: 5px solid rgb(36, 97, 138);
+  border-right: 5px solid rgb(36, 97, 138);
+
+  
+}
+.build_scs_card
+{
+  margin-top:100px;
+  padding:50px; 
+  background: rgb(176, 190, 53) !important;
+  border-bottom: 5px solid rgb(137, 148, 42);
+  border-right: 5px solid rgb(137, 148, 42);
+}
+.vapp_scs_card
+{
+  margin-top:100px;
+  padding:50px; 
+  background: rgb(190, 53, 183) !important;
+  border-bottom: 5px solid rgb(156, 43, 151);
+  border-right: 5px solid rgb(156, 43, 151);
+}
+.vapp_scs_card h2
+{
+  color: white;
+}
+.build_scs_card h2
+{
+color: white;
+}
+
+.evnt_scs_card h2
+{
+  color: white ;
+}
+
+/* event success message end */
+
+
+  .build_reg
+    {
+      background-color:white;
+      padding: 20px;
+      font-size: 25px;
+      width: 100%;
+      border: 2px solid #a2c6e6;
+      border-radius: 30px;   
+      color: black;
+      text-align: center;      
+      margin: 10px;      
+      font-weight: bold;
+    }
+.build_pass
+{
+  background-color:white;
+  padding: 20px;
+  font-size: 25px;
+  width: 100%;
+  border: 2px solid #c6cb36;
+  border-radius: 30px ;
+margin-top: 100px !important;
+  color: black;
+  text-align: center;
+
+  
+  margin: 10px;
+
+  font-weight: bold;
+}
+
+.build_vapp
+{
+  background-color:white;
+  padding: 5px;
+  font-size: 25px;
+  width: 100%;
+  border: 2px solid #e17b9c;
+  border-radius: 30px ;
+
+  color: black;
+  text-align: center;
+
+  
+  margin: 10px;
+
+  font-weight: bold;
+}
+.build_vapp:hover{
+
+  cursor: pointer;
+}
+
+
+.build_reg:hover
+{
+
+  cursor: pointer;
+}
+.build_pass:hover
+{
+
+  cursor: pointer;
+}
+
+
+
+/* motn 2023 style start */
+
+.footer_img
+{
+  z-index: 1000; 
+  position: absolute; 
+  width: 100%; 
+  height: 120px;
+}
+
+
+.card-head{
+  background-color: white; 
+  padding: 10px;
+  border-radius: 10px;
+}
+.buildcard-head
+{
+  background-color: white; 
+  padding: 10px;
+  border-radius: 10px;
+}
+.vappcard-head
+{
+  background-color: white; 
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.event_form .form-control 
+{
+  border: 1px solid rgba(53, 135, 190, 0.705);
+  border-bottom: 3px solid rgba(53, 135, 190, 0.342);
+  font-family: 'Mont', sans-serif;
+}
+.event_form .form-select
+{
+  border: 1px solid rgba(53, 135, 190, 0.705);
+  border-bottom: 3px solid rgba(53, 135, 190, 0.342);
+  font-family: 'Mont', sans-serif;
+}
+.event_form .form-select:focus
+{
+  box-shadow: none;
+  border-bottom: 1px solid rgba(53, 135, 190, 0.705); 
+  font-family: 'Mont', sans-serif;
+}
+.vapp_form .form-control
+{
+  border: 1px solid rgba(190, 53, 183, 0.788);
+  border-bottom: 3px solid rgba(90, 32, 87, 0.678);
+  font-family: 'Mont', sans-serif;
+}
+.vapp_form .form-select
+{
+  border: 1px solid rgba(190, 53, 183, 0.788);
+  border-bottom: 3px solid rgba(90, 32, 87, 0.678);
+  font-family: 'Mont', sans-serif;
+}
+.vapp_form .form-select:focus
+{
+  box-shadow: none;
+  border-bottom: 1px solid rgba(190, 53, 183, 0.788); 
+  font-family: 'Mont', sans-serif;
+}
+.event_form .form-control:focus
+{
+  box-shadow: none;
+  border-bottom: 1px solid rgba(53, 135, 190, 0.705); 
+  font-family: 'Mont', sans-serif;
+}
+.vapp_form .form-control:focus
+{
+  box-shadow: none;
+  border-bottom: 1px solid rgba(190, 53, 183, 0.788); 
+  font-family: 'Mont', sans-serif;
+}
+
+.build_form .form-control
+{
+  border: 1px solid  rgb(176, 190, 53);
+  border-bottom: 3px solid rgba(176, 190, 53, 0.432);
+  font-family: 'Mont', sans-serif;
+}
+.build_form .form-select
+{
+  border: 1px solid  rgb(176, 190, 53);
+  border-bottom: 3px solid rgba(176, 190, 53, 0.432);
+  font-family: 'Mont', sans-serif;
+}
+.build_form .form-control:focus
+{
+  box-shadow: none;
+  border-bottom: 1px solid  rgb(176, 190, 53); 
+  font-family: 'Mont', sans-serif;
+}
+.build_form .form-select:focus
+{
+  box-shadow: none;
+  border-bottom: 1px solid  rgb(176, 190, 53); 
+  font-family: 'Mont', sans-serif;
+}
+
+
+.evnt_button
+{
+  background-color:  rgb(53, 135, 190);
+  border-bottom: 2px solid  rgba(61, 113, 146, 0.685);
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  color: white;
+}
+
+
+.event_form,label
+{
+  margin-top: 5px;
+  font-weight: 400;
+  font-size: 15px;
+}
+.vapp_form,label
+{
+  margin-top: 5px;
+  font-weight: 400;
+  font-size: 15px;
+}
+.rst_button
+{
+  background-color:  rgb(190, 53, 53);
+  border-bottom: 2px solid  rgba(161, 78, 78, 0.473);
+border-left: none;
+border-right: none;
+border-top: none;
+border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  color: white;
+}
+.blk_button
+{
+  background-color:  rgb(63, 63, 63);
+  border-bottom: 2px solid  rgba(19, 19, 19, 0.473);
+border-left: none;
+border-right: none;
+border-top: none;
+border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  color: white;
+}
+
+.evnt_text
+{
+  font-family: 'Mont', sans-serif;
+}
+.form-check-input[type=radio]
+{
+  border: 1px solid black;
+}
+.radio-inline
+{
+  font-family: 'Mont', sans-serif;
+}
+/* motn 2023 style end */
+
+
+
+    header {
+      width: 100%;
+     
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      background: transparent;
+    }
+
+    .sbt_btn
+    {
+background-color:rgb(255 255 255 / 46%);
+width: 100%;
+padding: 10px;
+color: white;
+border-radius: 10px;
+margin-top: 50px;
+font-weight: bold;
+border: none;
+
+    }
+
+    .sbt_btn:hover
+    {
+      cursor: pointer;
+      background-color:rgb(255 255 255 / 20%);
+
+    }
+
+
+    .registration {
+      z-index: 900; /* Adjust z-index to be below header */
+      margin-top: 100px;
+    }
+    .reg_main
+    {
+      z-index: 900;
+      position:absolute;
+      margin-top: 100px;
+    }
+    .registartion h3{
+        color: white;
+    }
+
+    .registration_main
+    {
+    
+    }
+
+    .registration .card
+{
+    padding: 20px;
+    margin-top: 50px;
+    z-index: 1000;
+}
+
+.reg_card
+{
+  background:transparent !important;
+  border: none;
+}
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+background-size: cover !important;
+       /* Add blur effect */
+      background: url('../img/motn/bg_main1.png') no-repeat center center fixed;
+
+    }
+
+
+    .reg_background-image
+    {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+background-size: cover !important;
+       /* Add blur effect */
+      background: url('../img/motn/reg_bg2.png') no-repeat center center fixed;
+    }
+
+    @media (min-width: 320px) and (max-width: 425px) {
+
+      .logo_img
+      {
+        margin-left: 0px;
+      }
+      .build_reg
+{
+  font-size: 18px;
+
+
+ 
+}
+.build_pass
+{
+  font-size: 18px;
+
+}
+.build_vapp
+{
+  font-size: 18px;
+
+}
+.crop_cont p
+{
+  display: none;
+}
+.footer_img
+{
+
+
+  height: 80px;
+}
+      
+      
+          }
+      
+          @media (min-width: 426px) and (max-width: 768px) {
+
+            .crop_cont p
+{
+  display: none !important;
+}
+          }
+      
+          /* mobile design end */

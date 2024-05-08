@@ -1,0 +1,310 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/kayan/kayan_fav.png'  %}">
+    <title>KAYAN WELLNESS CENTER</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/kayan_demo.css'  %}?update=l" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+
+<style>
+      @font-face {
+    font-family: bentonsans;
+    src: url('{% static "fonts/BentonSans ExtraComp Regular Regular.otf" %}') format('opentype');
+   
+
+  }
+  
+</style>
+
+
+</head>
+<body style="background-color: #8B78AE;">
+
+
+    <!-- Main Content Section -->
+    <main class="p-2">
+
+        <div class="row mob_View">
+            <div class="col-6">
+                <div class="p-4 place" >
+                <h5 class="text-white">AL FAHID ISLAND</h5>
+               <h5 class="text-white">ABU DHABI</h5>
+            </div>
+            </div> 
+            <div class="col-6 ">
+                <div class="p-4 time" style="">
+            <h5 class="text-white">17-21 APRIL</h5>
+            <h5 class="text-white float-right">2024</h5>
+            </div>
+            </div>
+            <div class="col-12 ">
+              <a href="https://kayanwellnessfestival.infoeventz.com/"></a>
+                <div class="d-flex justify-content-center">
+                  
+               <img class="img-fluid mob_main_logo"  src="{% static 'images/kayan/root-demo/kayan_up.png' %}">
+        
+              </div>
+            </a>
+        </div>
+
+
+        </div>
+
+
+        <div class="row desktop_View">
+            <div class=" col-3 col-md-3">
+                <div class="p-4 place" >
+                <h5 class="text-white">AL FAHID ISLAND</h5>
+               <h5 class="text-white">ABU DHABI</h5>
+            </div>
+            </div> 
+            <div class="col-6 col-md-6">
+              <a class="d-flex justify-content-center" href="https://kayanwellnessfestival.infoeventz.com/">
+                <img class="img-fluid" style="width: 60%;" src="{% static 'images/kayan/root-demo/kayan_up.png' %}">
+          </a>
+              </div>
+
+<div class="col-3 col-md-3">
+    <div class="p-4 time" style="">
+<h5 class="text-white">17-21 APRIL</h5>
+<h5 class="text-white float-right">2024</h5>
+</div>
+</div>
+
+        </div>
+
+
+
+
+
+        <div class="row" style="position: relative; z-index: 1000; font-family:bentonsans !important ;">
+            <div class="d-flex justify-content-center">
+          <div class="col-12">
+            <div class="d-flex justify-content-center">
+              <form onsubmit="SubmitEvent(event)" >
+                <div class="row registration-card">
+                  <div class="d-flex justify-content-center">
+                <div class="col-lg-6 col-md-10 col-sm-12">
+                <div class="card shadow-lg " style="background-color: #8b78af; border: none;">
+                <div class="p-3">
+                <div class="row">
+                <div class="col-md-12">
+                <h1 class="text-center text-white">
+                    Register For Event Pass
+                </h1>
+                </div>
+                </div>
+                
+                <div class="row mt-5">
+                
+                <div class="col-md-6">
+                <label class="text-white">FIRST NAME</label>
+                <input class="form-control" name="first-name" type="text" required />
+                </div>
+                
+                    
+                <div class="col-md-6">
+                <label class="text-white">LAST NAME</label>
+                <input class="form-control" type="text" name="last-name" required />
+                </div>
+                
+                
+                <div class="col-md-6 mt-2">
+                    <label class="text-white">MOBILE</label>
+                    <input class="form-control" type="number" name="mobile" required />
+                    </div>
+                
+                
+                    <div class="col-md-6 mt-2">
+                        <label class="text-white">EMAIL</label>
+                        <input class="form-control" type="email" name="email" required />
+                        </div>
+                
+                        <div class="col-md-6 mt-2">
+                            <label class="text-white">DATE OF BIRTH</label>
+                            <input class="form-control" type="date" name="date-of-birth" required />
+                            </div>
+                
+                
+                            <div class="col-md-6 mt-2">
+                                <label class="text-white">DESIGNATION </label>
+                                
+                                <select name="card-type" class="form-select" >
+                                    <option class="text-muted" selected disabled value="" >Select Designation</option>
+                                    {% for des in event_cards %}
+                                    
+                                    <option value="{{des.id}}">{% if des.id == 6 %} ORGANISER {% else %} {{des.name}} {% endif %}</option>
+                                    {% endfor %}
+                
+                                </select>
+                                
+                                </div>
+                
+                                <div class="col-md-6 mt-2">
+                                    <label class="text-white">COMPANY NAME</label>
+                                    <input class="form-control" name="company" type="text" required />
+                                    </div>
+                
+                                    
+                                <div class="col-md-6 mt-2">
+                                    <label class="text-white">NATIONALITY</label>
+                                    <input class="form-control" name="nationality" type="text" required />
+                                    </div>
+                                            
+                                <div class="col-md-6 mt-2">
+                                    <label class="text-white">EMIRATES ID / PASSPORT</label>
+                                    <select name="id-proof-type" class="form-select id-proof-select" >
+                                        <option value="Passport-Id">PASSPORT</option>
+                                        <option value="Emirates-Id" selected>EMIRATES ID</option>
+                                      </select>
+                                    </div>
+                
+                                                              
+                            
+                
+                                    <div class="col-md-6 mt-2">
+                                        <label class="text-white id-proof-number-lable">EMIRATES ID NUMBER</label>
+                                        <input class="form-control id-proof-number-format" type="text" name="id-proof-number" maxlength="18" required/>
+                                        </div>
+                
+                                        <div class="col-md-6 mt-2">
+                                            <label class="text-white id-proof-expire-date-lable">EMIRATES ID EXPIRY DATE</label>
+                                            <input class="form-control expiry-check extra-validation" name="id-expiry-date" type="date" required />
+                                            <span class="id-expiry-date-is-not-valid d-none ml-2" style="color: rgb(195 152 152 / 84%);">  Expired </span>   
+                                        </div>
+                
+                                            <div class="col-md-6 mt-2">
+                                                <label class="text-white id-proof-file-front-lable">UPLOAD EMIRATES ID FRONT</label>
+                                                <input class="form-control validate-file" type="file" accept="image/* , .pdf" name="id-proof-front-file" required />
+                                                <div class="text-mute" style="font-size: 12px; color: rgba(0, 0, 0, 0.589);">
+                                                    <span class="ml-3"  style="color: #97c8bc ; letter-spacing: 1.6px;">Supports all kinds of images and PDFs <span style="color: rgba(255, 255, 255, 0.84);">( MAX FILE SIZE IS 3MB )</span></span>
+                                                                                        </div> 
+                                            </div>
+                
+                                                <div class="col-md-6 mt-2 id-proof-file-back-div">
+                                                    <label class="text-white id-proof-file-back-lable">UPLOAD EMIRATES ID BACK</label>
+                                                    <input class="form-control emirates-id-back validate-file" type="file" accept="image/*, .pdf" name="id-proof-back-file" required />
+                                                    <div class="text-mute" style="font-size: 12px; color: rgba(0, 0, 0, 0.589);">
+                                                        <span class="ml-3 " style="color: #97c8bc ; letter-spacing: 1.6px;">Supports all kinds of images and PDFs <span style="color: rgba(255, 255, 255, 0.84);">( MAX FILE SIZE IS 3MB )</span></span>
+                                                                                            </div>     
+                                                </div>
+                
+                                                    <div class="col-md-6 mt-2">
+                                                        <label class="text-white">UPLOAD PHOTO</label>
+                                                        <input class="form-control" type="file" onchange="openImageCropPopup(this)" id="photo-badge-upload" accept="image/*" name="badge-photo-file" required/>
+                                                        <div class="text-mute" style="font-size: 12px; color: rgba(0, 0, 0, 0.589);">
+                                                            <span class="ml-3"  style="color: #97c8bc ; letter-spacing: 1.6px;">Supports all kinds of images<span style="color: rgba(255, 255, 255, 0.84);">( MAX FILE SIZE IS 3MB )</span></span>
+                                                                                                </div> 
+                                                    </div>
+                
+                </div>
+                <div class="row">
+                <div class="col-md-6 mt-3">
+                <button type="submit" class="btn-submit btn btn-primary btn-lg w-100">SUBMIT</button>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <button type="button" class="btn-rst btn btn-danger btn-lg w-100 form-reset-btn">RESET</button>
+                    </div>
+                </div>
+                
+                
+                
+                </div>
+                
+                </div>
+                    </div>
+                </div>
+                </div>
+                </form>
+                
+            </div>
+              </div>
+          </div>
+          </div>
+
+
+
+<div class="row" style="position: relative; bottom: 0px;">
+<div class="col-6 p-4">
+<img class="img-fluid footer-img" src="{% static 'images/kayan/root-demo/abu_logo.png' %}" >
+</div>
+
+<div class="col-6 p-4">
+    <img class="img-fluid footer-img-right" src="{% static 'images/kayan/root-demo/link_logo.png' %}" >
+</div>
+</div>
+
+
+<div class="" style="position: fixed; bottom: 0px; width: 100%;">
+    <div class="d-flex justify-content-center">
+<img class="img-fluid bg-img-main" src="{% static 'images/kayan/root-demo/kayan logo shape-3-01.png' %}" style="">
+</div>
+</div>
+
+
+
+    </main>
+
+
+
+    <!-- modal start here  -->
+    <div class="modal fade"  id="imageCropModal" tabindex="-1" role="dialog" aria-labelledby="imageCropModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content text-white" style="background-color: black;">
+          <div class="modal-header" style="border-bottom: none ;">
+            <h5 class="modal-title" id="imageCropModalLabel">Crop Image</h5>
+            <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+          </div>
+          <div class="modal-body" style="height: 100%;">
+            <div class="row">
+            <div class="col-12 justify-content-center d-flex" style="display: inline-block;" id="cropper-container">
+              <img id="uploaded-image" src="" alt="Uploaded Image">
+              
+            </div>
+            
+            <div class="crop_cont col-12 my-1 justify-content-center d-flex" >
+              <p style="font-size: 20px;">Please crop the image as you want in badge</p>
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer" style="border-top: none;">
+            <button type="button" class="btn btn-light btn-lg" onclick="cropImage()">Done</button>
+            <button type="button" class="btn btn-danger btn-lg" onclick="cancelCrop()" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- modal end here -->
+    <!-- Footer Section -->
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/cropperjs/dist/cropper.js"></script>
+    <script>
+         const csrf_token='{{csrf_token}}'
+     </script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="{% static 'js/registration.js' %}?update=3"></script>  
+    <script>
+        $('.div-button').each((i,elm)=>{
+          let _link=$(elm).attr('href')
+          $(elm).click(()=>{window.location.href=_link})
+        })
+      </script>
+</body>
+</html>
