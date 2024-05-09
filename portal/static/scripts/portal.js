@@ -8,6 +8,11 @@ $.ajaxSetup({
 });
 
 $('#add-registration-form').submit(function (e) {
+    console.log(e.target);
+    if ($(e.target).find('.submit-and-print')[0]){
+        console.log('submit-and-print');
+    }
+
     e.preventDefault();
     
     var _FormData=new FormData($(e.target)[0])
@@ -38,6 +43,7 @@ $('#add-registration-form').submit(function (e) {
 
                 $(e.target)[0].reset()
 
+       
             }
             else{
                 Swal.fire({

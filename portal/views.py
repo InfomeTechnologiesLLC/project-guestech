@@ -114,23 +114,21 @@ def submit_add_registrations(request):
     email=request.POST.get('email')
     card_type_id=request.POST.get('card-type')
     
-    success=False
-    
+   
+    res={'success':False}
     try:
         cardtype_obj=EventCardType.objects.get(id=card_type_id)
         obj=EventRegistrations.objects.create(first_name=first_name,last_name=last_name,company=company,cardtype=cardtype_obj,email=email)
         
-        row=render_to_string('tables/table-rows/build-registrations-row.html',{'r':obj})
-        success=True
+        res['row']=render_to_string('tables/table-rows/build-registrations-row.html',{'r':obj})
+        res['success']=True
+        res['id']=obj.id
     except Exception as e:
-        row=''
-        success=False
+        res['success']=False
+
         print(e)
-        
-        
-    data={'success':success,'row':row}
-    
-    return JsonResponse(data)
+   
+    return JsonResponse(res)
 
 ####### EDITS STARTS HERE
 def get_registration_details(request):
@@ -610,7 +608,9 @@ def send_mail(request):
     if getTable(request) == VappRegistrations:
         registration=VappRegistrations.objects.get(id=id)
         uid='VAP-'+str(registration.id)
-     
+
+    return JsonResponse({})
+
     if method == 'Approved':
 
       

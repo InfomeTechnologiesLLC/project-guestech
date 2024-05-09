@@ -8,6 +8,10 @@ $.ajaxSetup({
 });
 
 $('#add-registration-form').submit(function (e) {
+    if ($(e.target).find('.submit-and-print:focus')[0]){
+        $(e.target).find('.submit-and-print:focus').addClass('active')
+    }
+    
     e.preventDefault();
     
     var _FormData=new FormData($(e.target)[0])
@@ -20,7 +24,7 @@ $('#add-registration-form').submit(function (e) {
         contentType: false,
         dataType: "json",
         success: function (response) {
-           
+            console.log(response);
             if(response.success){
                 $('#add-registration').modal('hide')
                 
@@ -38,6 +42,15 @@ $('#add-registration-form').submit(function (e) {
 
                 $(e.target)[0].reset()
 
+                if ($(e.target).find('.submit-and-print.active')[0]){
+                    
+                    $(e.target).find('.submit-and-print.active').attr('reg-id',response.id)
+                    onPrint($(e.target).find('.submit-and-print.active')[0])
+                    
+                }
+
+                $(e.target).find('.submit-and-print').removeClass('active')
+               
             }
             else{
                 Swal.fire({
