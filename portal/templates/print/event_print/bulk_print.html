@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Infoevent Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'vendors/feather/feather.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'js/select.dataTables.min.css' %}">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css' %}">
+  <!-- endinject -->
+
+
+  <!-- font awesome cdn start -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@900&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+
+body{
+      -webkit-print-color-adjust:exact !important;
+  print-color-adjust:exact !important;
+  font-family: "Bebas Neue", sans-serif; !important;
+    }
+
+    @media print {
+      @page {
+   
+        size: 89mm 140mm ;   
+      
+margin: 0px !important;
+
+
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+      body * {
+        visibility: hidden;
+
+       
+      
+      
+      }
+  
+      #section-to-print, #section-to-print * {
+        visibility: visible;
+        
+      }
+      #section-to-print {
+        position: absolute;
+        width: 100%;
+      
+
+   
+
+   
+      }
+
+    
+
+      .pagebreak {
+        page-break-after: always;
+      }
+.pagebreakbefore
+{
+  page-break-before: always;
+}  
+
+
+   
+
+
+
+    }
+  </style>
+</head>
+
+<body>
+
+ {% for obj in registrations %}
+
+
+ {% if obj.cardtype.id == 1 %}
+
+
+
+
+
+ 
+  <div style="width: 100%; height: 100%;" id="section-to-print">
+
+
+
+    <img style="width:100%; height: 100%;" src="{% static 'images/outer/outer_cardnew.jpg' %}">
+    
+    
+    <div style="position: absolute; top: 49%; left: 2%; width: 95%;" >
+      <h3 id="fullName" class="text-center name text-uppercase"  >{{obj.first_name}} {{obj.last_name}}</h3>
+      <h3 id="company" class="text-center name text-uppercase"  >{{obj.company}}</h3>
+    
+     </div>
+    <div style="position: absolute; top: 69.5%; width: 100%;">
+    <div class="" style="width: 100%;  margin-left: 0px;">
+      <h4 id="role" class="text-center role" style=" background: black; color: white; padding-top: 13px; padding-bottom: 13px;">Co-Host</h4>
+    </div>
+    </div>
+     
+     
+    </div>
+  
+
+ 
+
+
+
+<div class="pagebreak"></div>
+
+
+  {% endif %}
+
+
+
+
+{% endfor %}
+
+
+  <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="{% static 'vendors/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'vendors/datatables.net/jquery.dataTables.js' %}"></script>
+  <script src="{% static 'vendors/datatables.net-bs4/dataTables.bootstrap4.js' %}"></script>
+  <script src="{% static 'js/dataTables.select.min.js' %}"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{% static 'js/off-canvas.js' %}"></script>
+  <script src="{% static 'js/hoverable-collapse.js' %}"></script>
+  <script src="{% static 'js/template.js' %}"></script>
+  <script src="{% static 'js/settings.js' %}"></script>
+  <script src="{% static 'js/todolist.js' %}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{% static 'js/dashboard.js' %}"></script>
+  <script src="{% static 'js/Chart.roundedBarCharts.js' %}"></script>
+  <!-- End custom js for this page-->
+
+  <script>
+    // Get the elements with the specified class
+    var nameElements = document.getElementsByClassName('name');
+
+
+    // Function to adjust font size based on text length
+    function adjustFontSize(elements) {
+      for (var i = 0; i < elements.length; i++) {
+        var element = elements[i];
+        var text = element.innerText || element.textContent;
+        var length = text.length;
+
+        // Decrease font size by 2px for every 15 characters
+        var newSize = 55 - Math.floor(length / 17) * 2;
+
+        // Set the new font size
+        element.style.fontSize = newSize + 'px';
+      }
+    }
+
+    // Call the function for elements with 'name' class
+    adjustFontSize(nameElements);
+
+    // Call the function for elements with 'company' class
+    adjustFontSize(companyElements);
+</script>
+
+
+<script>
+  // Get the elements with the specified class
+  var nameElements = document.getElementsByClassName('role');
+
+
+  // Function to adjust font size based on text length
+  function adjustFontSize(elements) {
+    for (var i = 0; i < elements.length; i++) {
+      var element = elements[i];
+      var text = element.innerText || element.textContent;
+      var length = text.length;
+
+      // Decrease font size by 2px for every 15 characters
+      var newSize = 45 - Math.floor(length / 20) * 2;
+
+      // Set the new font size
+      element.style.fontSize = newSize + 'px';
+    }
+  }
+
+  // Call the function for elements with 'name' class
+  adjustFontSize(nameElements);
+
+  // Call the function for elements with 'company' class
+  adjustFontSize(companyElements);
+</script>
+
+
+
+</body >
+</html >
