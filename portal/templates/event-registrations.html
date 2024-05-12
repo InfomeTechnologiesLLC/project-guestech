@@ -362,7 +362,7 @@ p {
           <div class="col-md-2" id='build-export-as-excel'>
             <div class="d-flex content-justify-right">
             <button class="float-right btn btn-sm btn-primary ml-2" onclick="ExportToExcel('xlsx')">Export As Excel</button>
-            <button class="float-right btn btn-sm btn-primary ml-2 bulk-upload-open-btn" >Bulk Upload</button>
+            <button class="float-right btn btn-sm btn-primary ml-2 bulk-upload-open-btn " disabled >Bulk Upload</button>
             <input type="file" id="bulk-upload-inp" class="d-none" accept=".xlsx">
           </div>
           <!-- <div class="col-md-1">
@@ -693,8 +693,9 @@ p {
         <div class="modal-header">
           
           <h5 class="modal-title">Bulk Upload</h5>
-          <p style="position: absolute; right: 80px;"> <i class="fa-solid fa-file-arrow-down"></i> <a href="{% static 'excle/daz-event-excel-template.xlsx' %}" >Download Excel Template </a></p>
-  
+         
+          <!-- <p style="position: absolute; right: 80px;"> <i class="fa-solid fa-file-arrow-down"></i> <a href="{% static 'excle/daz-event-excel-template.xlsx' %}" >Download Excel Template </a></p>
+   -->
           <i class="fa-solid fa-xmark btn-close bulk-upload-close-button" data-bs-dismiss="modal" aria-label="Close"></i>
           
         </div>
