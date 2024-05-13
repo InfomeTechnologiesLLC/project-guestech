@@ -32,10 +32,9 @@
 
                       <span class="badge badge-secondary text-white mb-1">{{d.name}}</span><br>
 
-       
-                  
                   {% endfor %}
   
+                  {% if r.days.all.count == 0 %} <span class="text-muted"> No day</span>  {% endif %}
                 </td>
                 <td> <div style="width: 100px; overflow-wrap: break-word !important; word-wrap: break-word !important; white-space: initial !important;" id="table-comp-name">{{r.company}} </div> </td>
 
