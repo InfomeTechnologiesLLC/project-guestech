@@ -534,6 +534,7 @@ $('#excel-upload-file-inp').change(function (event) {
 
         var tr_html=''
         list_data=jsonData.slice(1,jsonData.length)
+        json_data
         // console.log(list_data)
         list_data.forEach(element => {
             if (element.length < 4){
@@ -691,24 +692,28 @@ function sendMail(id,method='approved'){
 
 function getTableRow(element,row_id) {
 
-    first_name=element[0] != undefined ? element[0] : ''
-    last_name=element[1] != undefined ? element[1] : ''
-    email=element[4] != undefined ? element[4] : ''
-    company=element[2] != undefined ? element[2] : ''
-    des=element[3] != undefined ? element[3] : ''
-    lanyard_color=element[5]!= undefined ? element[5] : ''
+    // first_name=element[0] != undefined ? element[0] : ''
+    // last_name=element[1] != undefined ? element[1] : ''
+    // email=element[4] != undefined ? element[4] : ''
+    // company=element[2] != undefined ? element[2] : ''
+    // des=element[3] != undefined ? element[3] : ''
+    // lanyard_color=element[5]!= undefined ? element[5] : ''
 
     
     tr=`
       <tr id="bulk-row-${row_id}">
 
-        <td class="d-flex" ><input class="mr-4 upload-select-check" onchange="changeCheck(event)" type="checkbox" checked row-id="${row_id}" />  ${row_id} <div class='row-status'></div> </td>
-        <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;"><div style="width:100px;">${first_name} ${last_name}</div></td>
-        <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;">${des}</td>
-        <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;">${email}</td>
-        <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;" >${company}</td>
-        <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;" >${lanyard_color}</td
-       
+        <td class="d-flex" ><input class="mr-4 upload-select-check" onchange="changeCheck(event)" type="checkbox" checked row-id="${element['row-id']}" />  ${element['row-id']} <div class='row-status'></div> </td>
+        <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;"><div style="width:100px;">${element['first-name']} ${element['last-name']}</div></td>
+        <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;">${element['card-type']}</td>
+        <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;">${element['email']}</td>
+        <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;" >${element['company']}</td>
+        <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;" >${element['mobile']}</td>
+            <td style="font-size:13px; font-weight:none; font-family: 'Mont', sans-serif;" >
+            ${element['days']['saturday'] ? `<span class="badge badge-secondary text-white my-1">Saturday</span>`: '' }<br>
+            ${element['days']['sunday'] ? `<span class="badge badge-secondary text-white my-1">Sunday</span>`: '' }<br>
+            ${element['days']['monday'] ?`<span class="badge badge-secondary text-white my-1">Monday</span>`: '' }<br>
+            </td>
         </tr>
     
     `
@@ -760,13 +765,25 @@ $('#bulk-upload-inp').change(function(e){
         row_num=0
         list_data.forEach(element => {
     
-            if (element[0] == null || element[6] == "SELECT DESIGNATION" ) return false
+            if (element[0] == null || element[5] == "Select Designation" ) return false
 
             row_num++
             row_id=row_num
-            final_data.push({'row-id':row_id,'first-name':element[0] ? element[0] : '' ,'last-name':element[1]? element[1] : '','email':element[4] ? element[4] : '','company':element[2] ? element[2] : '','card-type':element[3],'lanyard-color':element[5] ? element[5] : '','checked':1})
+
            
-            tr_html+=getTableRow(element,row_id)
+            _add_data={'row-id':row_id,
+            'first-name':element[0] ? element[0] : '' ,
+            'last-name':element[1]? element[1] : '',
+            'email':element[4] ? element[4] : '',
+            'company':element[2] ? element[2] : '',
+            'mobile':element[3] ? element[3] : '',
+            'card-type':element[5],
+            'checked':1,
+            'days':{'saturday':element[6] == 'Yes' ? true :false ,'sunday':element[7] == 'Yes' ? true :false ,'monday':element[8] == 'Yes' ? true :false }    
+        }
+            final_data.push(_add_data)
+           
+            tr_html+=getTableRow(_add_data,row_id)
 
         });
         console.log(final_data);

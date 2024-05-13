@@ -662,35 +662,43 @@ def submit_bulk_upload(request):
     data=json.loads(request.POST.get('data'))
     upload_proof_type=request.POST.get('proof-type')
     table=getTable(request)
-    print(upload_proof_type)
+
     error_ids=[]
-    bulk_data=[]
 
     res={'success':True}
     for i in data:
-        print(i['card-type'].capitalize())
+
         try:
-            if table == BuildRegistrations:
-                cardtype=BuildCardType.objects.get(name=i['card-type'.lower()])
+            if table == EventRegistrations:
+                cardtype=EventCardType.objects.get(name=i['card-type'.lower()])
                 
-            if table == BuildRegistrations:
+            if table == EventRegistrations:
                 
                 if i['checked']:
-                    bulk_data.append(BuildRegistrations(first_name=i['first-name'],
+                    obj=EventRegistrations(first_name=i['first-name'],
                             last_name=i['last-name'],
                             company=i['company'],
                             cardtype=cardtype,
                             email=i['email'],
-                            lanyard_color=i['lanyard-color']
-                            
-                    ))
+                            mobile=i['mobile'])
+
+                    _day_selector=[]
+                    for key , value in i['days'].items():
+                        if value:
+                            _day_selector.append(key)
+                        
+                    _days=daysTable.objects.filter(name__in=_day_selector)
+                    obj.save()
+                    obj.days.add(*_days)
+
+                    # bulk_data.append(obj)
          
         except Exception as e:
             print(e)
             res['success']=False
             error_ids.append(i['row-id'])
             
-    table.objects.bulk_create(bulk_data)
+    # table.objects.bulk_create(bulk_data)
     
     res['error_ids']=error_ids
     
