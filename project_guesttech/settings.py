@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE'  : 'django.db.backends.mysql', # <-- UPDATED line 
         'NAME'    : 'infomeglobal_guesttech',                 # <-- UPDATED line 
         'USER'    : 'root',                        # <-- UPDATED line
-        'PASSWORD': '123',              # <-- UPDATED line
+        'PASSWORD': '',              # <-- UPDATED line
         'HOST'    : 'localhost',                # <-- UPDATED line
         'PORT'    : '3306',
         'OPTIONS': {

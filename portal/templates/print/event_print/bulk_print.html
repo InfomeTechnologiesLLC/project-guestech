@@ -28,20 +28,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@900&family=Poppins:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
   <style>
 
 body{
       -webkit-print-color-adjust:exact !important;
   print-color-adjust:exact !important;
-  font-family: "Bebas Neue", sans-serif; !important;
+  font-family: "Poppins", sans-serif;
     }
 
     @media print {
       @page {
    
-        size: 89mm 140mm ;   
+        size: 76mm 128mm ;   
       
 margin: 0px !important;
 
@@ -96,41 +96,169 @@ margin: 0px !important;
 
  {% if obj.cardtype.id == 1 %}
 
+ <div style="width: 100%; height: 100%;" id="section-to-print">
 
 
 
-
- 
-  <div style="width: 100%; height: 100%;" id="section-to-print">
-
-
-
-    <img style="width:100%; height: 100%;" src="{% static 'images/outer/outer_cardnew.jpg' %}">
-    
-    
-    <div style="position: absolute; top: 49%; left: 2%; width: 95%;" >
-      <h3 id="fullName" class="text-center name text-uppercase"  >{{obj.first_name}} {{obj.last_name}}</h3>
-      <h3 id="company" class="text-center name text-uppercase"  >{{obj.company}}</h3>
-    
-     </div>
-    <div style="position: absolute; top: 69.5%; width: 100%;">
-    <div class="" style="width: 100%;  margin-left: 0px;">
-      <h4 id="role" class="text-center role" style=" background: black; color: white; padding-top: 13px; padding-bottom: 13px;">Co-Host</h4>
-    </div>
-    </div>
-     
-     
-    </div>
+  <img style="width:100%; height: 100%;" src="{% static 'images/etag/card speaker-01.jpg' %}">
+  <!--<div style="position: absolute; top: 80px; width: 100%; border: ">-->
+  <!--<div class="d-flex justify-content-center">-->
+  <!--<div style=" height: 100px; width: 100px; background-color: white;">-->
+  <!--  <img style="height: 100px; width: 100px;" src="https://www.astrourvasshi.com/upload/img/Blank_Avatar.png">-->
+  <!--</div>-->
+  <!--</div>-->
   
-
- 
-
-
+  <!--</div>-->
+  
+  <div style="position: absolute; top: 45%; width:96%;">
+    <h3 id="name" class="text-center" style="  font-family: 'Poppins', sans-serif; text-transform:capitalize; line-height: .9; font-size: 22px !important;  color:#062635 !important;">{{obj.first_name}} {{obj.last_name}}</h3>
+    <h3 id="company" class="text-center" style="   font-family: 'Poppins', sans-serif;   font-weight: 200; font-style: normal; text-transform:capitalize; line-height: .9;  font-size: 17px !important;  color:#062635 !important;">{{obj.company}}</h3>
+  
+   </div>
+   
+  <div style="position:absolute; bottom:40px; right:50px;">
+           <img style="height: 110px; width: 110px; " src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=EVP-{{registration.id}}" alt="QR Code">
+  
+  </div>
+  <!--<div style="position: absolute; bottom: 70px; width: 100%;">-->
+  <!--<div class="" style="width: 100%;  ">-->
+  <!--  <p  class="occupation text-center text-uppercase" style="font-family: bentonsansbold; letter-spacing: 1.2px; text-transform:capitalize; line-height: .9; font-size: 20px !important;  color:black;">DESIGNATION</p>-->
+  <!--</div>-->
+  <!--</div>-->
+   
+   
+  </div>
 
 <div class="pagebreak"></div>
 
 
   {% endif %}
+
+
+  {% if obj.cardtype.id == 2 %}
+
+  <div style="width: 100%; height: 100%;" id="section-to-print">
+ 
+ 
+ 
+   <img style="width:100%; height: 100%;" src="{% static 'images/etag/card vip-01.jpg' %}">
+   <!--<div style="position: absolute; top: 80px; width: 100%; border: ">-->
+   <!--<div class="d-flex justify-content-center">-->
+   <!--<div style=" height: 100px; width: 100px; background-color: white;">-->
+   <!--  <img style="height: 100px; width: 100px;" src="https://www.astrourvasshi.com/upload/img/Blank_Avatar.png">-->
+   <!--</div>-->
+   <!--</div>-->
+   
+   <!--</div>-->
+   
+   <div style="position: absolute; top: 45%; width:96%;">
+     <h3 id="name" class="text-center" style="  font-family: 'Poppins', sans-serif; text-transform:capitalize; line-height: .9; font-size: 22px !important;  color:#062635 !important;">{{obj.first_name}} {{obj.last_name}}</h3>
+     <h3 id="company" class="text-center" style="   font-family: 'Poppins', sans-serif;   font-weight: 200; font-style: normal; text-transform:capitalize; line-height: .9;  font-size: 17px !important;  color:#062635 !important;">{{obj.company}}</h3>
+   
+    </div>
+    
+   
+    <div style="position:absolute; bottom:40px; right:50px;">
+      <img style="height: 110px; width: 110px; " src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=EVP-{{registration.id}}" alt="QR Code">
+   
+   </div>
+   <!--<div style="position: absolute; bottom: 70px; width: 100%;">-->
+   <!--<div class="" style="width: 100%;  ">-->
+   <!--  <p  class="occupation text-center text-uppercase" style="font-family: bentonsansbold; letter-spacing: 1.2px; text-transform:capitalize; line-height: .9; font-size: 20px !important;  color:black;">DESIGNATION</p>-->
+   <!--</div>-->
+   <!--</div>-->
+    
+    
+   </div>
+ 
+ <div class="pagebreak"></div>
+ 
+ 
+   {% endif %}
+
+
+   {% if obj.cardtype.id == 3 %}
+
+   <div style="width: 100%; height: 100%;" id="section-to-print">
+  
+  
+  
+    <img style="width:100%; height: 100%;" src="{% static 'images/etag/card team-01.jpg' %}">
+    <!--<div style="position: absolute; top: 80px; width: 100%; border: ">-->
+    <!--<div class="d-flex justify-content-center">-->
+    <!--<div style=" height: 100px; width: 100px; background-color: white;">-->
+    <!--  <img style="height: 100px; width: 100px;" src="https://www.astrourvasshi.com/upload/img/Blank_Avatar.png">-->
+    <!--</div>-->
+    <!--</div>-->
+    
+    <!--</div>-->
+    
+    <div style="position: absolute; top: 45%; width:96%;">
+      <h3 id="name" class="text-center" style="  font-family: 'Poppins', sans-serif; text-transform:capitalize; line-height: .9; font-size: 22px !important;  color:#062635 !important;">{{obj.first_name}} {{obj.last_name}}</h3>
+      <h3 id="company" class="text-center" style="   font-family: 'Poppins', sans-serif;   font-weight: 200; font-style: normal; text-transform:capitalize; line-height: .9;  font-size: 17px !important;  color:#062635 !important;">{{obj.company}}</h3>
+    
+     </div>
+   
+     <div style="position:absolute; bottom:40px; right:50px;">
+      <img style="height: 110px; width: 110px; " src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=EVP-{{registration.id}}" alt="QR Code">
+    
+    </div>
+    <!--<div style="position: absolute; bottom: 70px; width: 100%;">-->
+    <!--<div class="" style="width: 100%;  ">-->
+    <!--  <p  class="occupation text-center text-uppercase" style="font-family: bentonsansbold; letter-spacing: 1.2px; text-transform:capitalize; line-height: .9; font-size: 20px !important;  color:black;">DESIGNATION</p>-->
+    <!--</div>-->
+    <!--</div>-->
+     
+     
+    </div>
+  
+  <div class="pagebreak"></div>
+  
+  
+    {% endif %}
+
+
+    {% if obj.cardtype.id == 4 %}
+
+    <div style="width: 100%; height: 100%;" id="section-to-print">
+   
+   
+   
+     <img style="width:100%; height: 100%;" src="{% static 'images/etag/etag-guest.jpg' %}">
+     <!--<div style="position: absolute; top: 80px; width: 100%; border: ">-->
+     <!--<div class="d-flex justify-content-center">-->
+     <!--<div style=" height: 100px; width: 100px; background-color: white;">-->
+     <!--  <img style="height: 100px; width: 100px;" src="https://www.astrourvasshi.com/upload/img/Blank_Avatar.png">-->
+     <!--</div>-->
+     <!--</div>-->
+     
+     <!--</div>-->
+     
+     <div style="position: absolute; top: 45%; width:96%;">
+       <h3 id="name" class="text-center" style="  font-family: 'Poppins', sans-serif; text-transform:capitalize; line-height: .9; font-size: 22px !important;  color:#062635 !important;">{{obj.first_name}} {{obj.last_name}}</h3>
+       <h3 id="company" class="text-center" style="   font-family: 'Poppins', sans-serif;   font-weight: 200; font-style: normal; text-transform:capitalize; line-height: .9;  font-size: 17px !important;  color:#062635 !important;">{{obj.company}}</h3>
+     
+      </div>
+      
+   
+      <div style="position:absolute; bottom:40px; right:50px;">
+        <img style="height: 110px; width: 110px; " src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=EVP-{{registration.id}}" alt="QR Code">
+     
+     </div>
+     <!--<div style="position: absolute; bottom: 70px; width: 100%;">-->
+     <!--<div class="" style="width: 100%;  ">-->
+     <!--  <p  class="occupation text-center text-uppercase" style="font-family: bentonsansbold; letter-spacing: 1.2px; text-transform:capitalize; line-height: .9; font-size: 20px !important;  color:black;">DESIGNATION</p>-->
+     <!--</div>-->
+     <!--</div>-->
+      
+      
+     </div>
+   
+   <div class="pagebreak"></div>
+   
+   
+     {% endif %}
+
 
 
 
