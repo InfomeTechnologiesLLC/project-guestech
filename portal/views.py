@@ -101,9 +101,9 @@ def registrations(request):
         page_path='build-registrations.html'
         cardtyes=BuildCardType.objects.filter(active=True)
    
+    days=daysTable.objects.filter(active=True)
     
-    
-    data={'username':request.user.username,'registrations':registrations,'cardtypes':cardtyes}
+    data={'username':request.user.username,'registrations':registrations,'cardtypes':cardtyes,'days':days}
     return render(request,page_path,data)
 
 
@@ -113,12 +113,19 @@ def submit_add_registrations(request):
     company=request.POST.get('company')
     email=request.POST.get('email')
     card_type_id=request.POST.get('card-type')
-    
+    mobile=request.POST.get('mobile')
+    day_selector=json.loads(request.POST.get('day-selector'))
    
     res={'success':False}
     try:
         cardtype_obj=EventCardType.objects.get(id=card_type_id)
-        obj=EventRegistrations.objects.create(first_name=first_name,last_name=last_name,company=company,cardtype=cardtype_obj,email=email)
+        obj=EventRegistrations.objects.create(first_name=first_name,last_name=last_name,company=company,cardtype=cardtype_obj,email=email,mobile=mobile)
+        
+        days=daysTable.objects.filter(id__in=day_selector)
+        
+        obj.days.add(*days)
+        obj.save()        
+        
         
         res['row']=render_to_string('tables/table-rows/build-registrations-row.html',{'r':obj})
         res['success']=True
@@ -143,8 +150,8 @@ def get_registration_details(request):
 
             obj=EventRegistrations.objects.get(id=edit_id)
             cardtypes=EventCardType.objects.filter(active=True).order_by('name')
-            
-            modal_html=render_to_string('includes/edit-models/event-edit-modal-content.html',{"r":obj,'cardtypes':cardtypes})
+            days=daysTable.objects.filter(active=True)
+            modal_html=render_to_string('includes/edit-models/event-edit-modal-content.html',{"r":obj,'cardtypes':cardtypes,'days':days})
         elif getTable(request) == BuildRegistrations:
             obj=BuildRegistrations.objects.get(id=edit_id)
             cardtypes=BuildCardType.objects.filter(active=True).order_by('name')
@@ -183,15 +190,21 @@ def submit_edit_registration(request):
             company=request.POST.get('company')
             
             email=request.POST.get('email')
-           
+            mobile=request.POST.get('mobile')
             cardtype=request.POST.get('card-type')
             edit_id=request.POST.get('edit-id')
             
+            day_selector=json.loads(request.POST.get('day-selector'))
             
             obj=EventRegistrations.objects.filter(id=edit_id)
-            obj.update(first_name=first_name,last_name=last_name,company=company,email=email,cardtype=cardtype,updated_at=timezone.now())
+            obj.update(first_name=first_name,last_name=last_name,company=company,email=email,cardtype=cardtype,updated_at=timezone.now(),mobile=mobile)
             
             instance_obj=obj.first()
+            
+            days=daysTable.objects.filter(id__in=day_selector)
+            instance_obj.days.clear()
+            instance_obj.days.add(*days)
+        
             
             instance_obj.save()
             

@@ -33,6 +33,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui@4/material-ui.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{% static 'css/pdfviewer.jquery.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css" integrity="sha512-mR/b5Y7FRsKqrYZou7uysnOdCIJib/7r5QeJMFvLNHNhtye3xJp1TdJVPLtetkukFn227nKpXD9OjUc09lx97Q==" crossorigin="anonymous"
+  referrerpolicy="no-referrer" />
  
   <style>
     .daz_menu:hover
@@ -763,6 +765,11 @@ p {
                 <label for="">Email</label>
                 <input type="text" class="form-control" name="email" required>
               </div>
+
+              <div class="col-6">
+                <label for="">Mobile</label>
+                <input type="text" class="form-control" name="mobile" required>
+              </div>
      
               <div class="col-6">
                 <label for="">Designation</label>
@@ -773,6 +780,19 @@ p {
                   {% endfor %}
                 </select>
               </div>
+
+              
+              <div class="col-6">
+                <label for="">Days</label>
+                <select class="selectpicker"id="day-selector" name="day-selector" multiple aria-label="size 3 select example">
+                 
+                  {% for d in days %}
+                    <option value="{{d.id}}">{{d.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              
             </div>
            
             
@@ -835,7 +855,9 @@ p {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="{% static 'js/pdfviewer.jquery.js' %}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+ 
   <script>
 
     var csrf_token='{{csrf_token}}'

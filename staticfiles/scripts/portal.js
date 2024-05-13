@@ -13,8 +13,14 @@ $('#add-registration-form').submit(function (e) {
     }
     
     e.preventDefault();
-    
+
+
     var _FormData=new FormData($(e.target)[0])
+    
+    // if ($(e.target).find('#day-selector')){
+    _FormData.append('day-selector',JSON.stringify($(e.target).find('#day-selector').val()))
+    // }
+    
     _FormData.append('csrfmiddlewaretoken',csrf_token)
     $.ajax({
         type: "POST",
@@ -41,6 +47,8 @@ $('#add-registration-form').submit(function (e) {
                   })
 
                 $(e.target)[0].reset()
+                
+                $(e.target).find('#day-selector').selectpicker('val', '')
 
                 if ($(e.target).find('.submit-and-print.active')[0]){
                     
@@ -103,7 +111,11 @@ function onSubmitEditForm (e) {
     e.preventDefault();
 
     var _FormData=new FormData($(e.target)[0])
+
+    console.log($(e.target).find('#day-selector'))
+
     _FormData.append('edit-id',edit_id)
+    _FormData.append('day-selector',JSON.stringify($(e.target).find('#day-selector').val()))
     _FormData.append('csrfmiddlewaretoken',csrf_token)
 
     $.ajax({

@@ -118,6 +118,8 @@ class EventRegistrations(models.Model):
     # #locations
     # location=models.ForeignKey(Locations,on_delete=models.CASCADE)
     
+    days=models.ManyToManyField('portal.daysTable')
+    
     id_proof_expiry=models.DateField(null=True)
     id_proof_type=models.CharField(max_length=50,choices=(("Passport-Id",'Passport-Id'),("Emirates-Id","Emirates-Id")),default="Emirates-Id")
     id_proof_number=models.TextField(null=True)
@@ -140,3 +142,9 @@ class EventRegistrations(models.Model):
     class Meta:
         db_table='event_registrations'
 
+class daysTable(models.Model):
+    name=models.CharField(max_length=50)
+    active=models.BooleanField(default=True)
+    
+    class Meta:
+        db_table='event_daystable'

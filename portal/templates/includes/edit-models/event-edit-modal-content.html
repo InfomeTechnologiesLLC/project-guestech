@@ -6,8 +6,10 @@
       </div>
       <div class="modal-body">
        
-      
-          <div class="row ">
+      <div class="row">
+
+
+
             <div class="col-6">
               <label for="">First Name</label>
               <input type="text" id="edit-first-name" class="form-control" value="{{r.first_name}}" name="first-name" required>
@@ -17,8 +19,8 @@
               <label for="">Last Name</label>
               <input type="text" id="edit-last-name" class="form-control" value="{{r.last_name}}" name="last-name" required>
             </div>
-          </div>
-            <div class="row mt-2">
+    
+
               <div class="col-6">
                 <label for="">Company</label>
                 <input type="text" id="edit-company" class="form-control" name="company" value="{{r.company}}" required>
@@ -28,9 +30,13 @@
                 <label for="">email</label>
                 <input type="email" id="edit-email" class="form-control" value="{{r.email}}" name="email" required>
               </div>
+         
+
+            <div class="col-6">
+              <label for="">Mobile</label>
+              <input type="text" class="form-control" id="edit-mobile" name="mobile"  value="{{r.mobile}}" required>
             </div>
 
-            <div class="row mt-2">
          
 
               <div class="col-6">
@@ -43,12 +49,26 @@
                 </select>
               </div>
 
+
+              <div class="col-6">
+                <label for="">Days  </label>
+                <select class="selectpicker" id="day-selector" name="day-selector" multiple aria-label="size 3 select example">
+                 
+                  {% for d in days %}
+                  
+                  <option value="{{d.id}}" {% if d in r.days.all %} selected {% endif %} >{{d.name}}</option>
+                  
+                  {% endfor %}
+
+                </select>
+              </div>
+            </div>
               <!-- <div class="col-6">
                 <label for="">Job Title</label>
                 <input type="text" class="form-control" value="{{r.jobtitle}}" id="edit-job-title" name="job-title" required>
               </div> -->
 
-            </div>
+      
 
           
  
@@ -63,3 +83,6 @@
  
     </div>
   </Form>
+  <script>
+    $('#day-selector').selectpicker();
+  </script>
