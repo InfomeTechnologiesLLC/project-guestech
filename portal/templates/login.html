@@ -43,8 +43,8 @@
 <body>
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth px-0 " style="background:url('../static/images/bg/bg_comp.webp'); background-size: cover; ">
-        <div class="row w-100 mx-0 ">
+      <div class="content-wrapper d-flex align-items-center auth px-0 " >
+        <div class="row w-100 mx-0 d-none">
           <div class="col-lg-4 mx-auto ">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5 shadow-lg">
                 <a target="_blank" href="https://infoeventz.com/"
@@ -53,6 +53,7 @@
                 <img src="{% static 'images/infoevent_logo.png' %}" alt="logo">
               </div>
               </a>
+<<<<<<< HEAD
               <h4>Welcome, Let's Rock This</h4>
               <h6 class="font-weight-light">Sign in to continue.</h6>
               <form class="pt-3">
@@ -69,18 +70,118 @@
                   <a  class="btn btn-info btn-block text-white btn-lg font-weight-medium auth-form-btn" onclick="validate_login()">LOGIN</a>
                 </div>
                 <div id="login-failed" style="display: none;">
+=======
+             
+<!-- new tab for login start -->
 
-                  <div style="color: red;font-weight: 1000;" align="center"> login failed  
-                  <span>😥</span>  
-                  </div>
-                  <div align="center" style="font-size: 12px;" class="text-danger">please enther correct password and username</div>
-                  
-                </div>
-              
-              </form>
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="border: none;">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> Check In & Out</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Registrations</button>
+  </li>
+
+</ul>
+<div class="tab-content" id="pills-tabContent" style="border: none !important; padding: 0px;">
+  <div class="tab-pane fade show active"  id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <h4>Welcome, Let's Rock This</h4>
+    <h6 class="font-weight-light">Sign in to continue.</h6>
+
+    <form class="pt-3">
+      <div class="form-group">
+        <input type="text" class="form-control form-control-lg " id="username" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control form-control-lg" id="password" placeholder="Password">
+      </div>
+      <div class="mt-3">
+        <a  class="btn btn-info btn-block text-white btn-lg font-weight-medium auth-form-btn" onclick="validate_login()">LOGIN</a>
+      </div>
+      <div id="login-failed" style="display: none;">
+
+        <div style="color: red;font-weight: 1000;" align="center"> login failed  
+        <span>😥</span>  
+        </div>
+        <div align="center" style="font-size: 12px;" class="text-danger">please enther correct password and username</div>
+        
+      </div>
+    
+    </form>
+
+
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+</div>
+
+
+
+
+<!-- new tab for login end -->
+>>>>>>> 0b587fba6b5e94b734a35485af8b1175f8635ee4
+
             </div>
           </div>
         </div>
+
+<!-- checkin or checkout start-->
+
+
+<div class="row w-100 mx-0 ">
+  <div class="col-lg-4 mx-auto ">
+    <div class="auth-form-light text-left py-5 px-4 px-sm-5 shadow-lg">
+     
+<!-- new tab for login start -->
+
+<div>
+  <h3 class="text-center" style="font-weight: bold; line-height: 30px; color: burlywood;">Please Select below form to move forward</h3>
+</div>
+
+<div class="row mt-4">
+<div class="col-md-12">
+<label>Please select the room</label>
+<select class="form-control">
+<option>
+Room 1
+</option>
+<option>Room 2</option>
+
+</select>
+</div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-md-12 mb-2">
+<label>Please select option</label>
+</div>
+<div class="col-md-3">
+<a id="checkin-link" class="check_btn active" onclick="activateLink('checkin')" style="">Checkin</a>
+</div>
+<div class="col-md-3">
+  <a id="checkout-link" class="check_btn"  onclick="activateLink('checkout')">Checkout</a>
+</div>
+</div>
+<div class="row mt-5">
+<div class="col-md-12">
+<button class="btn btn-secondary w-100">Submit</button>
+</div>
+</div>
+
+
+
+
+<!-- new tab for login end -->
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- checkin or checkout end -->
+
       </div>
       <!-- content-wrapper ends -->
     </div>
@@ -103,6 +204,22 @@
   <script src="{% static 'js/todolist.js' %}"></script>
   <!-- endinject -->
 </body>
+
+   <script>
+    function activateLink(type) {
+      var checkinLink = document.getElementById('checkin-link');
+      var checkoutLink = document.getElementById('checkout-link');
+
+      if (type === 'checkin') {
+        checkinLink.classList.add('active');
+        checkoutLink.classList.remove('active');
+      } else if (type === 'checkout') {
+        checkoutLink.classList.add('active');
+        checkinLink.classList.remove('active');
+      }
+    }
+  </script>
+
 
 <script>
   
