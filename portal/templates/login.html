@@ -56,15 +56,15 @@
              
 <!-- new tab for login start -->
 
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="border: none;">
+<!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="border: none;">
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="pills-home-tab" data-toggle="pill" data-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> Check In & Out</button>
+    <button class="nav-link add-jq-active active" id="pills-home-tab" type="button" role="tab" aria-controls="pills-home" aria-selected="true"> Check In & Out</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="pills-profile-tab" data-toggle="pill" data-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Registrations</button>
+    <button class="nav-link add-jq-active" id="pills-profile-tab"  type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Registrations</button>
   </li>
 
-</ul>
+</ul> -->
 <div class="tab-content" id="pills-tabContent" style="border: none !important; padding: 0px;">
   <div class="tab-pane fade show active"  id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <h4>Welcome, Let's Rock This</h4>
@@ -93,8 +93,6 @@
 
 
   </div>
-  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
 </div>
 
 
@@ -109,7 +107,7 @@
 <!-- checkin or checkout start-->
 
 
-<div class="row w-100 mx-0 d-none" id="main-loginmain-login">
+<div class="row w-100 mx-0 d-none" id="volunteer-config">
   <div class="col-lg-4 mx-auto ">
     <div class="auth-form-light text-left py-5 px-4 px-sm-5 shadow-lg">
      
@@ -122,12 +120,10 @@
 <div class="row mt-4">
 <div class="col-md-12">
 <label>Please select the room</label>
-<select class="form-control">
-<option>
-Room 1
-</option>
-<option>Room 2</option>
-
+<select class="form-control" id="volunteer-select" style="color: black;">
+{% for room in rooms %}
+<option value="{{room.id}}">{{room.name}}</option>
+{% endfor %}
 </select>
 </div>
 </div>
@@ -137,15 +133,15 @@ Room 1
 <label>Please select option</label>
 </div>
 <div class="col-md-3">
-<a id="checkin-link" class="check_btn active" onclick="activateLink('checkin')" style="">Checkin</a>
+<a id="checkin-link" class="check_btn add-jq-active active" status="1"  >Checkin</a>
 </div>
 <div class="col-md-3">
-  <a id="checkout-link" class="check_btn"  onclick="activateLink('checkout')">Checkout</a>
+  <a id="checkout-link" class="check_btn add-jq-active" status="2">Checkout</a>
 </div>
 </div>
 <div class="row mt-5">
 <div class="col-md-12">
-<button class="btn btn-secondary w-100">Submit</button>
+<button class="btn btn-secondary w-100 text-white" id="volunteer-config-submit">Submit</button>
 </div>
 </div>
 
@@ -184,22 +180,35 @@ Room 1
 </body>
 
    <script>
-    function activateLink(type) {
-      var checkinLink = document.getElementById('checkin-link');
-      var checkoutLink = document.getElementById('checkout-link');
 
-      if (type === 'checkin') {
-        checkinLink.classList.add('active');
-        checkoutLink.classList.remove('active');
-      } else if (type === 'checkout') {
-        checkoutLink.classList.add('active');
-        checkinLink.classList.remove('active');
-      }
-    }
+
+    document.querySelectorAll('.add-jq-active').forEach((elm)=>{
+       
+        elm.addEventListener('click',(btn)=>{
+          document.querySelectorAll('.add-jq-active').forEach((elm)=>{ 
+            elm.classList.remove('active')
+          })
+        btn.target.classList.add('active')
+        })
+
+    })
+
+  // function activateLink(type) {
+  //     var checkinLink = document.getElementById('checkin-link');
+  //     var checkoutLink = document.getElementById('checkout-link');
+
+  //     if (type === 'checkin') {
+  //       checkinLink.classList.add('active');
+  //       checkoutLink.classList.remove('active');
+  //     } else if (type === 'checkout') {
+  //       checkoutLink.classList.add('active');
+  //       checkinLink.classList.remove('active');
+  //     }
+  //   }
   </script>
 
 <script>
-
+  let _url=''
   function validate_login() {
     var username=document.getElementById('username')
     var password=document.getElementById('password')
@@ -229,10 +238,12 @@ Room 1
       success: function (data) {
         if (data.success){
           if (data.volunteer){
-            console.log('valunteer')
-          }else{
-            window.location.replace(data.url);
-          }
+           $('#main-login').addClass('d-none')
+           $('#volunteer-config').removeClass('d-none')
+           _url=data.url
+            }else{
+              window.location.replace(data.url);
+            }
           
         }
         else{
@@ -248,6 +259,16 @@ Room 1
     if(e.which == 13) {
         validate_login();
     }
+
+    $('#volunteer-config-submit').click(function (){
+      
+
+      console.log($('.check_btn.active').attr('status'),$('#volunteer-select').val());
+      localStorage.setItem('room-id',$('#volunteer-select').val())
+      localStorage.setItem('check-id',$('.check_btn.active').attr('status'))
+      window.location.replace(_url)
+
+    })
 });
 </script>
 </html>

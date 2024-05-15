@@ -10,7 +10,7 @@ from django.core import mail
 from django.utils.html import strip_tags
 from django.db.models import Q, Count
 from django.urls import reverse
-
+from check_in_and_check_out.models import rooms
 from project_guesttech import settings
 import json
 
@@ -25,7 +25,8 @@ def empty_page(request):
 ######LOGIN
 
 def login_page(request):
-    return render(request,'login.html')
+    context={'rooms':rooms.objects.filter(active=True)}
+    return render(request,'login.html',context)
 
 def validate_login(request):
     
@@ -37,7 +38,7 @@ def validate_login(request):
     
     if user is not None:
         volunteer_page=False
-        print(user.profile)
+        
         if user.profile.role.id == 3:
             _url=reverse('volunteer-page')
             volunteer_page=True
@@ -45,14 +46,12 @@ def validate_login(request):
             _url=reverse('admin-page')
         elif user.profile.role.id == 1:
             _url=reverse('dashboard')
-        print(_url,user.profile.role.id)
+        login(request,user)
+
         return JsonResponse({'success':True,'url':_url,'volunteer':volunteer_page})
     else:
         return JsonResponse({'success':False})
      
-    
-    
-    return JsonResponse({})
 def logout_user(request):
     logout(request)
     return redirect('login')

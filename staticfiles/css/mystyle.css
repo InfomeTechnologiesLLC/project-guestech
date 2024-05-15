@@ -24,10 +24,11 @@
     border-radius: 2px;
     text-decoration: none;
     cursor: pointer;
+    color: rgb(66, 66, 66);
 }
-.check_btn:hover
+.check_btn:not(.active):hover
 {
- 
+    color: rgb(66, 66, 66);
     background-color: #1cafa062;  
     text-decoration: none;
     cursor: pointer;
