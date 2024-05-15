@@ -44,7 +44,7 @@
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center auth px-0 " >
-        <div class="row w-100 mx-0 ">
+        <div class="row w-100 mx-0 d-none">
           <div class="col-lg-4 mx-auto ">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5 shadow-lg">
                 <a target="_blank" href="https://infoeventz.com/"
@@ -105,6 +105,64 @@
             </div>
           </div>
         </div>
+
+<!-- checkin or checkout start-->
+
+
+<div class="row w-100 mx-0 ">
+  <div class="col-lg-4 mx-auto ">
+    <div class="auth-form-light text-left py-5 px-4 px-sm-5 shadow-lg">
+     
+<!-- new tab for login start -->
+
+<div>
+  <h3 class="text-center" style="font-weight: bold; line-height: 30px; color: burlywood;">Please Select below form to move forward</h3>
+</div>
+
+<div class="row mt-4">
+<div class="col-md-12">
+<label>Please select the room</label>
+<select class="form-control">
+<option>
+Room 1
+</option>
+<option>Room 2</option>
+
+</select>
+</div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-md-12 mb-2">
+<label>Please select option</label>
+</div>
+<div class="col-md-3">
+<a id="checkin-link" class="check_btn active" onclick="activateLink('checkin')" style="">Checkin</a>
+</div>
+<div class="col-md-3">
+  <a id="checkout-link" class="check_btn"  onclick="activateLink('checkout')">Checkout</a>
+</div>
+</div>
+<div class="row mt-5">
+<div class="col-md-12">
+<button class="btn btn-secondary w-100">Submit</button>
+</div>
+</div>
+
+
+
+
+<!-- new tab for login end -->
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- checkin or checkout end -->
+
       </div>
       <!-- content-wrapper ends -->
     </div>
@@ -124,6 +182,22 @@
   <script src="{% static 'js/todolist.js' %}"></script>
   <!-- endinject -->
 </body>
+
+   <script>
+    function activateLink(type) {
+      var checkinLink = document.getElementById('checkin-link');
+      var checkoutLink = document.getElementById('checkout-link');
+
+      if (type === 'checkin') {
+        checkinLink.classList.add('active');
+        checkoutLink.classList.remove('active');
+      } else if (type === 'checkout') {
+        checkoutLink.classList.add('active');
+        checkinLink.classList.remove('active');
+      }
+    }
+  </script>
+
 
 <script>
   

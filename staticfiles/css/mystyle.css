@@ -8,6 +8,31 @@
 
 
 
+.check_btn.active
+{
+    padding: 10px; 
+    background-color: #1cafa0e7; 
+    border-radius: 2px; 
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+.check_btn
+{
+    padding: 10px; 
+    background-color: #1cafa04f;  
+    border-radius: 2px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.check_btn:hover
+{
+ 
+    background-color: #1cafa062;  
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* guesttech style end */
 .dropdown {
     position: relative;
