@@ -44,7 +44,7 @@
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center auth px-0 " >
-        <div class="row w-100 mx-0 d-none">
+        <div class="row w-100 mx-0" id="main-login">
           <div class="col-lg-4 mx-auto ">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5 shadow-lg">
                 <a target="_blank" href="https://infoeventz.com/"
@@ -53,24 +53,6 @@
                 <img src="{% static 'images/infoevent_logo.png' %}" alt="logo">
               </div>
               </a>
-<<<<<<< HEAD
-              <h4>Welcome, Let's Rock This</h4>
-              <h6 class="font-weight-light">Sign in to continue.</h6>
-              <form class="pt-3">
-                <div class="form-group">
-
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control form-control-lg " id="username" placeholder="Username">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="password" placeholder="Password">
-                </div>
-                <div class="mt-3">
-                  <a  class="btn btn-info btn-block text-white btn-lg font-weight-medium auth-form-btn" onclick="validate_login()">LOGIN</a>
-                </div>
-                <div id="login-failed" style="display: none;">
-=======
              
 <!-- new tab for login start -->
 
@@ -119,7 +101,6 @@
 
 
 <!-- new tab for login end -->
->>>>>>> 0b587fba6b5e94b734a35485af8b1175f8635ee4
 
             </div>
           </div>
@@ -128,7 +109,7 @@
 <!-- checkin or checkout start-->
 
 
-<div class="row w-100 mx-0 ">
+<div class="row w-100 mx-0 d-none" id="main-loginmain-login">
   <div class="col-lg-4 mx-auto ">
     <div class="auth-form-light text-left py-5 px-4 px-sm-5 shadow-lg">
      
@@ -187,11 +168,8 @@ Room 1
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-
-
-
-
-
+  <!-- container-scroller -->
+  <!-- plugins:js -->
   <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
@@ -220,9 +198,7 @@ Room 1
     }
   </script>
 
-
 <script>
-  
 
   function validate_login() {
     var username=document.getElementById('username')
@@ -258,8 +234,6 @@ Room 1
             window.location.replace(data.url);
           }
           
-        
-        
         }
         else{
           document.getElementById('login-failed').style.display='block'
