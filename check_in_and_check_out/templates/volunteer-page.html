@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>INFOEVENTZ-LOGIN</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'vendors/feather/feather.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css' %}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css' %}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{% static 'images/info_logo.png' %}" />
+  
+  <link
+  rel="stylesheet"
+  href="{% static 'css/mystyle.css' %}"
+ 
+/>
+
+
+
+</head>
+
+<body style="background-color:seashell;">
+  <div class="container-scroller">
+ 
+
+
+<!-- checkin or checkout start-->
+
+
+
+
+
+<div class="container">
+<div class="row">
+
+<div class="col-md-3">
+    <img class="img-fluid" src="{% static 'images/guestech/logo1.png' %}" style="width: 100%;">
+</div>
+
+<div class="col-md-8">
+    <button class="btn btn-danger mt-4" style="float: right;">LOGOUT <img src="{% static 'images/guestech/power-off.png' %}" style="margin-top:-3px;"></button>
+<button class="btn btn-primary mt-4 mr-4" style="float: right;">ROOM 1</button>
+
+</div>
+
+
+
+</div>
+</div>
+
+<!-- total count start -->
+<div class="container">
+<div class="row mt-5">
+
+<div class="col-md-6">
+<div class="row">
+<div class="col-md-6 mt-2">
+    <div class="card shadow" style="border-radius: 5px !important;">
+        <div class="p-3">
+            <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
+        <h4 class="text-primary mt-1" style="font-weight: bold;">Total Entry</h4>
+        <div style="background-color: rgba(0, 0, 255, 0.315); padding: 10px;">
+            <h3>1000</h3>
+        </div>
+        <p class="text-muted mt-2">Room 1</p>
+        </div>
+        </div>
+</div>
+
+<div class="col-md-6 mt-2">
+    <div class="card shadow" style="border-radius: 5px !important;">
+        <div class="p-3">
+            <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
+        <h4 class="text-primary mt-1" style="font-weight: bold;">Checkin</h4>
+        <div style="background-color: rgba(0, 0, 255, 0.315); padding: 10px;">
+            <h3>5600</h3>
+        </div>
+        <p class="text-muted mt-2">Room 1</p>
+        </div>
+        </div>
+</div>
+
+
+<div class="col-md-6 mt-2">
+    <div class="card shadow" style="border-radius: 5px !important;">
+        <div class="p-3">
+            <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
+        <h4 class="text-primary mt-1" style="font-weight: bold;">Checkout</h4>
+        <div style="background-color: rgba(0, 0, 255, 0.315); padding: 10px;">
+            <h3>1890</h3>
+        </div>
+        <p class="text-muted mt-2">Room 1</p>
+        </div>
+        </div>
+</div>
+
+
+<!-- <div class="col-md-6 mt-2">
+    <div class="card shadow">
+        <div class="p-3">
+        <h3 class="" style="font-weight: bold;">Total Count</h3>
+        </div>
+        </div>
+</div> -->
+
+
+</div>
+
+
+
+
+
+</div>
+
+<div class="col-md-6">
+
+<div class="card shadow mb-5">
+
+<!-- entry success start -->
+<div class="w-100" style="background-color: green;">
+<div class="d-flex justify-content-center">
+<img class="img-fluid" src=" {% static 'images/guestech/achievement.png' %}">
+</div>
+</div>
+<div class="p-3">
+<h2 class="text-center">Name</h2>
+<h3 class="text-center text-success">Successfully Checkin To Room 1</h3>
+
+</div>
+
+<!-- entry success end -->
+
+<div class="p-3 mb-3 d-none">
+
+<img class="img-fluid" src="{% static 'images/guestech/scan_qr.jpg' %}" style="height: 380px; width: 100%;">
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- total count end -->
+
+
+<!-- checkin or checkout end -->
+
+
+  </div>
+
+<footer style="padding: 10px; position: absolute; bottom: 0px; background-color: white; width: 100%;">
+    <h6 class="text-center mt-2" style="color: rgba(165, 42, 42, 0.507);">ALL RIGHT RESERVED</h6>
+</footer>
+
+
+
+  <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{% static 'js/off-canvas.js' %}"></script>
+  <script src="{% static 'js/hoverable-collapse.js' %}"></script>
+  <script src="{% static 'js/template.js' %}"></script>
+  <script src="{% static 'js/settings.js' %}"></script>
+  <script src="{% static 'js/todolist.js' %}"></script>
+  <!-- endinject -->
+</body>
+
+   <script>
+    function activateLink(type) {
+      var checkinLink = document.getElementById('checkin-link');
+      var checkoutLink = document.getElementById('checkout-link');
+
+      if (type === 'checkin') {
+        checkinLink.classList.add('active');
+        checkoutLink.classList.remove('active');
+      } else if (type === 'checkout') {
+        checkoutLink.classList.add('active');
+        checkinLink.classList.remove('active');
+      }
+    }
+  </script>
+
+
+<script>
+  
+
+  function validate_login() {
+    var username=document.getElementById('username')
+    var password=document.getElementById('password')
+
+    if (!username.value){
+      username.classList.add('input-empty')
+      console.log('username')
+      return false;
+    }
+    else{
+      username.classList.remove('input-empty')
+    }
+    if (!password.value){
+      console.log('pas')
+      password.classList.add('input-empty')
+      return false;
+    }
+    else{
+      password.classList.remove('input-empty')
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "{% url 'validate' %}",
+      data: {username:username.value,password:password.value,csrfmiddlewaretoken:'{{ csrf_token }}'},
+      dataType: "json",
+      success: function (data) {
+        if (data.success){
+          if (data.volunteer){
+            console.log('valunteer')
+          }else{
+            window.location.replace(data.url);
+          }
+          
+        
+        
+        }
+        else{
+          document.getElementById('login-failed').style.display='block'
+        }
+      }
+      
+
+    });
+    
+  }
+  $(document).on('keypress',function(e) {
+    if(e.which == 13) {
+        validate_login();
+    }
+});
+</script>
+</html>

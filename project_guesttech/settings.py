@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portal',
-    'registration'
+    'registration',
+    'check_in_and_check_out'
+
 ]
 
 MIDDLEWARE = [
