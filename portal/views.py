@@ -9,6 +9,7 @@ from django.template.loader import render_to_string
 from django.core import mail 
 from django.utils.html import strip_tags
 from django.db.models import Q, Count
+from django.urls import reverse
 
 from project_guesttech import settings
 import json
@@ -31,10 +32,21 @@ def validate_login(request):
     username=request.POST.get('username')
     password=request.POST.get('password')
     user =authenticate(username=username,password=password)
-     
+    
+    # login_mode=request.POST.get('login-mode')
+    
     if user is not None:
-        login(request,user)
-        return JsonResponse({'success':True})
+        volunteer_page=False
+        print(user.profile)
+        if user.profile.role.id == 3:
+            _url=reverse('volunteer-page')
+            volunteer_page=True
+        elif user.profile.role.id == 2:
+            _url=reverse('admin-page')
+        elif user.profile.role.id == 1:
+            _url=reverse('dashboard')
+        print(_url,user.profile.role.id)
+        return JsonResponse({'success':True,'url':_url,'volunteer':volunteer_page})
     else:
         return JsonResponse({'success':False})
      

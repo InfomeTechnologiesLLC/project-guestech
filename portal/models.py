@@ -1,8 +1,19 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-        
+class userRole(models.Model):
+    name=models.CharField(max_length=100,null=True)
+    class Meta:
+        db_table='user_profile_role'
+class Profile(models.Model):
+    user=models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    role=models.ForeignKey(userRole,on_delete=models.CASCADE)
+    
+    class Meta:
+        db_table='user_profile'
+         
 
         
 class EventCardType(models.Model):
