@@ -2,7 +2,7 @@ from django.db import models
 from portal.models import EventRegistrations 
 # Create your models here.
 
-class rooms(models.Model):
+class Rooms(models.Model):
     name=models.CharField(null=True,max_length=50)
     active=models.BooleanField(default=True)
     
@@ -16,6 +16,7 @@ class EntryLog(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     active=models.BooleanField(default=True)
+    room=models.ForeignKey(Rooms,on_delete=models.CASCADE)
     
     class Meta:
         db_table='entry_log'

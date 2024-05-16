@@ -353,3 +353,7 @@ border-radius: 5px;
 .dropdown-toggle :hover{
     background-color: white;
 }
+
+:fullscreen, ::backdrop {
+    background-color: seashell;
+}

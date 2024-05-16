@@ -29,7 +29,7 @@
 </head>
 
 <body style="background-color:seashell;">
-  <div class="container-scroller">
+  <div id="body-container" class="container-scroller">
  
 
 
@@ -47,9 +47,10 @@
 </div>
 
 <div class="col-md-8">
-    <button class="btn btn-danger mt-4" style="float: right;">LOGOUT <img src="{% static 'images/guestech/power-off.png' %}" style="margin-top:-3px;"></button>
-<button class="btn btn-primary mt-4 mr-4" style="float: right;">ROOM 1</button>
+    <a href="{% url 'logout' %}" class="btn btn-danger mt-4" style="float: right;">LOGOUT <img src="{% static 'images/guestech/power-off.png' %}" style="margin-top:-3px;"></a>
 
+<button class="btn btn-secondary text-white mt-4 mr-4 " id="on-click-fullscreen" style="float: right;">Open Fullscreen <svg xmlns="http://www.w3.org/2000/svg" style="width: 12px;" class="mx-1" viewBox="0 0 448 512"><path fill="#ffffff" d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z"/></svg></button>
+<p class="btn btn-info text-white mt-4 mr-4 disabled text-capitalize" style="float: right; font-size: medium;" id="page-identifier">Loading ...</p>
 </div>
 
 
@@ -71,7 +72,7 @@
         <div style="background-color: rgba(0, 0, 255, 0.315); padding: 10px;">
             <h3>1000</h3>
         </div>
-        <p class="text-muted mt-2">Room 1</p>
+        <p class="text-muted mt-2 dashboard-room-name"></p>
         </div>
         </div>
 </div>
@@ -82,9 +83,9 @@
             <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
         <h4 class="text-primary mt-1" style="font-weight: bold;">Checkin</h4>
         <div style="background-color: rgba(0, 0, 255, 0.315); padding: 10px;">
-            <h3>5600</h3>
+            <h3 id="total-check-in" class="text-capitalize">Loading...</h3>
         </div>
-        <p class="text-muted mt-2">Room 1</p>
+        <p class="text-muted mt-2 dashboard-room-name"></p>
         </div>
         </div>
 </div>
@@ -96,9 +97,9 @@
             <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
         <h4 class="text-primary mt-1" style="font-weight: bold;">Checkout</h4>
         <div style="background-color: rgba(0, 0, 255, 0.315); padding: 10px;">
-            <h3>1890</h3>
+            <h3 id="total-check-out" class="text-capitalize">Loading...</h3>
         </div>
-        <p class="text-muted mt-2">Room 1</p>
+        <p class="text-muted mt-2 dashboard-room-name"></p>
         </div>
         </div>
 </div>
@@ -126,22 +127,25 @@
 <div class="card shadow mb-5">
 
 <!-- entry success start -->
+<div class="d-none" id="success-div">
+
+
 <div class="w-100" style="background-color: green;">
 <div class="d-flex justify-content-center">
 <img class="img-fluid" src=" {% static 'images/guestech/achievement.png' %}">
 </div>
 </div>
-<div class="p-3">
-<h2 class="text-center">Name</h2>
-<h3 class="text-center text-success">Successfully Checkin To Room 1</h3>
+<div class="p-3 ">
+<h2 class="text-center" id="scanned-id-name">Name</h2>
+<h3 class="text-center text-success">Successfully Checkin To <p id="scanned-room-name"></p></h3>
 
 </div>
-
+</div>
 <!-- entry success end -->
 
-<div class="p-3 mb-3 d-none">
+<div class="p-3 mb-3" id="scanning-div">
 
-<img class="img-fluid" src="{% static 'images/guestech/scan_qr.jpg' %}" style="height: 380px; width: 100%;">
+<img class="img-fluid" id="check-status-image-dashboard" src="{% static 'images/dashboard/check out image-01-min.jpg' %}" style="height: 380px; width: 100%;">
 
 
 </div>
@@ -163,7 +167,6 @@
 
 <!-- checkin or checkout end -->
 
-
   </div>
 
 <footer style="padding: 10px; position: absolute; bottom: 0px; background-color: white; width: 100%;">
@@ -171,6 +174,7 @@
 </footer>
 
 
+<script src="{% static 'js/onscan.min.js' %}"></script>
 
   <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
   <!-- endinject -->
@@ -185,75 +189,122 @@
   <!-- endinject -->
 </body>
 
-   <script>
-    function activateLink(type) {
-      var checkinLink = document.getElementById('checkin-link');
-      var checkoutLink = document.getElementById('checkout-link');
+  <script>
+    const room_id=localStorage.getItem('room-id')
+    const check_status=localStorage.getItem('check-id')
+    // console.log('Awdad');
+ 
 
-      if (type === 'checkin') {
-        checkinLink.classList.add('active');
-        checkoutLink.classList.remove('active');
-      } else if (type === 'checkout') {
-        checkoutLink.classList.add('active');
-        checkinLink.classList.remove('active');
-      }
-    }
-  </script>
-
-
-<script>
-  
-
-  function validate_login() {
-    var username=document.getElementById('username')
-    var password=document.getElementById('password')
-
-    if (!username.value){
-      username.classList.add('input-empty')
-      console.log('username')
-      return false;
-    }
-    else{
-      username.classList.remove('input-empty')
-    }
-    if (!password.value){
-      console.log('pas')
-      password.classList.add('input-empty')
-      return false;
-    }
-    else{
-      password.classList.remove('input-empty')
-    }
-
-    $.ajax({
-      type: "POST",
-      url: "{% url 'validate' %}",
-      data: {username:username.value,password:password.value,csrfmiddlewaretoken:'{{ csrf_token }}'},
-      dataType: "json",
-      success: function (data) {
-        if (data.success){
-          if (data.volunteer){
-            console.log('valunteer')
-          }else{
-            window.location.replace(data.url);
-          }
-          
-        
-        
+    onScan.attachTo(document, {
+        minLength:3,// enter-key expected at the end of a scan
+        reactToPaste: true, // Compatibility to built-in scanners in paste-mode (as opposed to keyboard-mode)
+        onScan: function(sCode, iQty) { // Alternative to document.addEventListener('scan')
+            
+            addEntry(sCode)
+        },
+        onKeyDetect: function(iKeyCode){ // output all potentially relevant key events - great for debugging!
+            
         }
-        else{
-          document.getElementById('login-failed').style.display='block'
-        }
-      }
-      
-
     });
-    
-  }
-  $(document).on('keypress',function(e) {
-    if(e.which == 13) {
-        validate_login();
+
+    function addEntry(sCode) {
+        _data={'room-id':room_id,'check-status':check_status,'evp-id':sCode,'csrfmiddlewaretoken':'{{csrf_token}}'}
+            
+            $.ajax({
+                type: "POST",
+                url: "{% url 'check-in-and-check-out-entry' %}",
+                data: _data,
+                dataType: "json",
+                success: function (response) {
+                    console.log(response)
+                    if (response.status){
+
+                        $('#success-div').removeClass('d-none')
+                        $('#scanning-div').addClass('d-none')
+                    
+                        $('#scanned-id-name').text(response.registration.name)
+                        $('#scanned-room-name').text(response.room.name)
+                    }
+                    setTimeout(() => {
+                            $('#scanning-div').removeClass('d-none')
+                            $('#success-div').addClass('d-none')
+                    }, 5000);
+                }
+            });
     }
-});
-</script>
+
+    get_latest_dashboard(true)
+    setInterval(() => {
+        
+        get_latest_dashboard(false)
+
+    }, 5000);
+
+    function get_latest_dashboard(loading_first=false) {
+        $.ajax({
+            type: "GET",
+            url: "{% url 'get-latest-data-dashboard' %}",
+            data:{'room-id':room_id,'loading-first':loading_first} ,
+            dataType: "json",
+            success: function (response) {
+               
+                if (response.success){
+                    $('#total-check-out').text(response.entries['total-check-out'])
+                    $('#total-check-in').text(response.entries['total-check-in'])
+                    if (loading_first){
+                        $('.dashboard-room-name').text(response.room['name'])
+                        let roomname=''
+                        if (check_status == 1){
+                            roomname='Check In'
+                        }else{
+                            roomname='Check Out'
+                        }
+                        $('#page-identifier').text(`${response.room['name']} ${roomname}`)
+                    }
+                }
+            }
+        });
+    }
+    
+
+
+    if (document.addEventListener)
+        {
+        document.addEventListener('fullscreenchange', onChangeFullScreen, false);
+        document.addEventListener('mozfullscreenchange', onChangeFullScreen, false);
+        document.addEventListener('MSFullscreenChange', onChangeFullScreen, false);
+        document.addEventListener('webkitfullscreenchange', onChangeFullScreen, false);
+        }
+
+    if (check_status == 1 ){
+        $('#check-status-image-dashboard').attr('src','/static/images/dashboard/check in image-01-min.jpg')
+    }else{
+        $('#check-status-image-dashboard').attr('src','/static/images/dashboard/check out image-01-min.jpg')
+    }
+   function onChangeFullScreen (on_system=true){
+    if(window.innerHeight == screen.height) {
+        if (on_system == false){
+            document.exitFullscreen()
+        }
+        $('#on-click-fullscreen').html('Exit Fullscreen  <svg xmlns="http://www.w3.org/2000/svg" style="width: 12px;" class="mx-1" viewBox="0 0 448 512"><path fill="#ffffff" d="M160 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V64zM32 320c-17.7 0-32 14.3-32 32s14.3 32 32 32H96v64c0 17.7 14.3 32 32 32s32-14.3 32-32V352c0-17.7-14.3-32-32-32H32zM352 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H352V64zM320 320c-17.7 0-32 14.3-32 32v96c0 17.7 14.3 32 32 32s32-14.3 32-32V384h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320z"/></svg>')
+    } else {
+        $('#on-click-fullscreen').html('Open Fullscreen  <svg xmlns="http://www.w3.org/2000/svg" style="width: 12px;" class="mx-1" viewBox="0 0 448 512"><path fill="#ffffff" d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z"/></svg>')
+        if (on_system == false){
+            document.getElementById('body-container').requestFullscreen()
+        }
+       
+    }
+
+   }
+
+    $('#on-click-fullscreen').click(function(){
+
+        onChangeFullScreen(false)
+
+        
+    })
+
+
+
+ </script>
 </html>

@@ -10,7 +10,7 @@ from django.core import mail
 from django.utils.html import strip_tags
 from django.db.models import Q, Count
 from django.urls import reverse
-from check_in_and_check_out.models import rooms
+from check_in_and_check_out.models import Rooms
 from project_guesttech import settings
 import json
 
@@ -25,7 +25,7 @@ def empty_page(request):
 ######LOGIN
 
 def login_page(request):
-    context={'rooms':rooms.objects.filter(active=True)}
+    context={'rooms':Rooms.objects.filter(active=True)}
     return render(request,'login.html',context)
 
 def validate_login(request):
@@ -737,6 +737,7 @@ def get_latest_data(request):
         return JsonResponse(data)
     
     return JsonResponse({'new_data':False})
+
 
 
 
