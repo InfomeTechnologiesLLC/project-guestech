@@ -51,3 +51,6 @@ def get_latest_dashboard_data(request):
 
 def admin_page(request):
     return render(request,'admin-page.html')
+
+def checkinout(request):
+    return render(request,'checkinout.html')

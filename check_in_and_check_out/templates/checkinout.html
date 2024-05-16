@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>INFOEVENTZ-LOGIN</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'vendors/feather/feather.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css' %}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css' %}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{% static 'images/info_logo.png' %}" />
+  
+  <link
+  rel="stylesheet"
+  href="{% static 'css/mystyle.css' %}"
+ 
+/>
+
+
+
+</head>
+
+<body style="background-color:seashell;">
+  <div id="body-container" class="container-scroller">
+ 
+
+
+<!-- checkin or checkout start-->
+
+
+
+
+
+<div class="container">
+<div class="row">
+
+<div class="col-md-3">
+    <img class="img-fluid" src="{% static 'images/guestech/logo1.png' %}" style="width: 100%;">
+</div>
+
+<div class="col-md-8">
+    <a href="{% url 'logout' %}" class="btn btn-danger mt-4" style="float: right;">LOGOUT <img src="{% static 'images/guestech/power-off.png' %}" style="margin-top:-3px;"></a>
+
+<button class="btn btn-secondary text-white mt-4 mr-4 " id="on-click-fullscreen" style="float: right;">Open Fullscreen <svg xmlns="http://www.w3.org/2000/svg" style="width: 12px;" class="mx-1" viewBox="0 0 448 512"><path fill="#ffffff" d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z"/></svg></button>
+<p class="btn btn-info text-white mt-4 mr-4 disabled text-capitalize" style="float: right; font-size: medium;" id="page-identifier">Loading ...</p>
+</div>
+
+
+
+</div>
+</div>
+
+<!-- total count start -->
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6"><h4 class="ml-3 mt-5">ROOM 1 REPORT</h4></div>
+        <div class="col-md-6 mt-5">
+<div style="float: right;">
+<button class="btn btn-sm btn-outline-warning">All</button>
+<button class="btn btn-sm btn-outline-success">Checkin</button>
+<button class="btn btn-sm btn-outline-danger">Checkout</button>
+</div>
+        </div>
+
+
+    </div>
+
+
+<div class="row mt-4">
+<div class="col-md-12">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col" class="text-success">In-Time</th>
+            <th scope="col" class="text-danger">Out-Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+</div>
+
+
+</div>
+
+<!-- total count end -->
+
+
+<!-- checkin or checkout end -->
+
+  </div>
+
+<footer style="padding: 10px; position: absolute; bottom: 0px; background-color: white; width: 100%;">
+    <h6 class="text-center mt-2" style="color: rgba(165, 42, 42, 0.507);">ALL RIGHT RESERVED</h6>
+</footer>
+
+
+<script src="{% static 'js/onscan.min.js' %}"></script>
+
+  <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{% static 'js/off-canvas.js' %}"></script>
+  <script src="{% static 'js/hoverable-collapse.js' %}"></script>
+  <script src="{% static 'js/template.js' %}"></script>
+  <script src="{% static 'js/settings.js' %}"></script>
+  <script src="{% static 'js/todolist.js' %}"></script>
+  <!-- endinject -->
+</body>
+
+ 
+</html>
