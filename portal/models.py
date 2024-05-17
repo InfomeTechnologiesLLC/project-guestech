@@ -150,6 +150,9 @@ class EventRegistrations(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
+    def get_name(self):
+
+        return f"{self.first_name} {self.last_name}"
     class Meta:
         db_table='event_registrations'
 

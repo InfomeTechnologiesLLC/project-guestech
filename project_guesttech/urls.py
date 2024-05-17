@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('portal/',include('portal.urls')),
-    path('check-in-and-check-out/',include('check_in_and_check_out.urls')),
+    path('portal/check-in-and-check-out/',include('check_in_and_check_out.urls')),
     path('',include('registration.urls')),
     
     

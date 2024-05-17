@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>INFOEVENTZ-LOGIN</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'vendors/feather/feather.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'vendors/css/vendor.bundle.base.css' %}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'css/vertical-layout-light/style.css' %}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{% static 'images/info_logo.png' %}" />
+  
+  <link
+  rel="stylesheet"
+  href="{% static 'css/mystyle.css' %}"
+ 
+/>
+
+
+
+<style>
+  table {   
+  counter-reset: rowNumber;
+  }
+  tbody tr {
+  counter-increment: rowNumber;
+  }
+  table tr .counter::before {   
+    content: counter(rowNumber);   
+
+  }
+  table tbody{
+    overflow: auto;
+  height: 100px;
+  }
+</style>
+</head>
+
+<body style="background-color:seashell;">
+  <div id="body-container" class="container-scroller">
+ 
+
+
+<!-- checkin or checkout start-->
+
+
+
+
+
+<div class="container">
+<div class="row justify-content-between">
+
+<div class="col-md-3">
+    <img class="img-fluid" src="{% static 'images/guestech/logo1.png' %}" style="width: 100%;">
+</div>
+
+<div class="col-md-8">
+    <a href="{% url 'logout' %}" class="btn btn-danger mt-4" style="float: right;">LOGOUT <img src="{% static 'images/guestech/power-off.png' %}" style="margin-top:-3px;"></a>
+
+</div>
+
+
+
+</div>
+</div>
+
+<!-- total count start -->
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6"><h4 class="ml-3 mt-5">ROOM 1 REPORT</h4></div>
+        <div class="col-md-6 mt-5">
+<div style="float: right;">
+<button class="btn btn-sm btn-outline-warning">All</button>
+<button class="btn btn-sm btn-outline-success">Checkin</button>
+<button class="btn btn-sm btn-outline-danger">Checkout</button>
+</div>
+        </div>
+
+
+    </div>
+
+
+<div class="row mt-4">
+<div class="col-md-12">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col" class="text-success">In-Time</th>
+            <th scope="col" class="text-danger">Out-Time</th>
+          </tr>
+        </thead>
+        <tbody >
+          {% for entry in entry_logs %}
+          <tr>
+            <th scope="row" class="counter"></th>
+            <td>{{entry.registration.get_name}}</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          {% endfor %}
+      
+        </tbody>
+      </table>
+
+</div>
+</div>
+
+
+</div>
+
+<!-- total count end -->
+
+
+<!-- checkin or checkout end -->
+
+  </div>
+
+<footer style="padding: 10px; position: absolute; bottom: 0px; background-color: white; width: 100%;">
+    <h6 class="text-center mt-2" style="color: rgba(165, 42, 42, 0.507);">ALL RIGHT RESERVED</h6>
+</footer>
+
+
+<script src="{% static 'js/onscan.min.js' %}"></script>
+
+  <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{% static 'js/off-canvas.js' %}"></script>
+  <script src="{% static 'js/hoverable-collapse.js' %}"></script>
+  <script src="{% static 'js/template.js' %}"></script>
+  <script src="{% static 'js/settings.js' %}"></script>
+  <script src="{% static 'js/todolist.js' %}"></script>
+  <!-- endinject -->
+</body>
+
+ 
+</html>

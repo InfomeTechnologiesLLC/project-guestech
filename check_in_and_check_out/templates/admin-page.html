@@ -36,13 +36,6 @@
 <!-- checkin or checkout start-->
 
 
-
-
-
-
-
-
-
 <div class="container">
 <div class="row">
 
@@ -97,109 +90,38 @@
                     
                 <h5 class="text-success mt-1" style="font-weight: bold;">Checkin</h5>
                 <div style="background-color: rgba(0, 255, 13, 0.315); padding: 5px;">
-                    <h4 class="" >5600</h4>
+                    <h4 class="" id="admin-total-check-in" >5600</h4>
                 </div>
                 <h5 class="text-danger mt-1" style="font-weight: bold;">Checkout</h5>
                 <div style="background-color: rgba(255, 0, 0, 0.315); padding: 5px;">
-                    <h4>5600</h4>
+                    <h4 id="admin-total-check-out">5600</h4>
                 </div>
                 <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
                 </div>
                 </div>
         </div>
     
-    <div class="col-md-3 mt-2">
+    {% for room in rooms %}
+    
+    <div class="col-md-3 mt-2" room-id="{{room.id}}">
         <div class="card shadow" style="border-radius: 5px !important;">
             <div class="p-3">
-                <p class="mt-2" style="color: slateblue; font-size: 18px; font-weight: bold; border-bottom: 1px solid rgb(177, 173, 173);">ROOM 1</p>
+                <p class="mt-2" style="color: slateblue; font-size: 18px; font-weight: bold; border-bottom: 1px solid rgb(177, 173, 173);">{{room.name}}</p>
                 
             <h5 class="text-success mt-1" style="font-weight: bold;">Checkin</h5>
             <div style="background-color: rgba(0, 255, 13, 0.315); padding: 5px;">
-                <h4 class="" >5600</h4>
+                <h4 class="" id="total-check-in">{{room.total_check_in}}</h4>
             </div>
             <h5 class="text-danger mt-1" style="font-weight: bold;">Checkout</h5>
             <div style="background-color: rgba(255, 0, 0, 0.315); padding: 5px;">
-                <h4>5600</h4>
+                <h4 id="total-check-out">{{room.total_check_out}}</h4>
             </div>
             <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
             </div>
             </div>
     </div>
     
-    
-    <div class="col-md-3 mt-2">
-        <div class="card shadow" style="border-radius: 5px !important;">
-            <div class="p-3">
-                <p class=" mt-2" style="color: brown; font-size: 18px; font-weight: bold; border-bottom: 1px solid rgb(177, 173, 173);">ROOM 2</p>
-                
-            <h5 class="text-success mt-1" style="font-weight: bold;">Checkin</h5>
-            <div style="background-color: rgba(0, 255, 13, 0.315); padding: 5px;">
-                <h4 class="" >5600</h4>
-            </div>
-            <h5 class="text-danger mt-1" style="font-weight: bold;">Checkout</h5>
-            <div style="background-color: rgba(255, 0, 0, 0.315); padding: 5px;">
-                <h4>5600</h4>
-            </div>
-            <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
-            </div>
-            </div>
-    </div>
-    
-
-    <div class="col-md-3 mt-2">
-        <div class="card shadow" style="border-radius: 5px !important;">
-            <div class="p-3">
-                <p class="mt-2" style="color: chocolate; font-size: 18px; font-weight: bold; border-bottom: 1px solid rgb(177, 173, 173);">ROOM 3</p>
-                
-            <h5 class="text-success mt-1" style="font-weight: bold;">Checkin</h5>
-            <div style="background-color: rgba(0, 255, 13, 0.315); padding: 5px;">
-                <h4 class="" >5600</h4>
-            </div>
-            <h5 class="text-danger mt-1" style="font-weight: bold;">Checkout</h5>
-            <div style="background-color: rgba(255, 0, 0, 0.315); padding: 5px;">
-                <h4>5600</h4>
-            </div>
-            <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
-            </div>
-            </div>
-    </div>
-
-    <div class="col-md-3 mt-2">
-        <div class="card shadow" style="border-radius: 5px !important;">
-            <div class="p-3">
-                <p class="mt-2" style="color: chocolate; font-size: 18px; font-weight: bold; border-bottom: 1px solid rgb(177, 173, 173);">ROOM 4</p>
-                
-            <h5 class="text-success mt-1" style="font-weight: bold;">Checkin</h5>
-            <div style="background-color: rgba(0, 255, 13, 0.315); padding: 5px;">
-                <h4 class="" >5600</h4>
-            </div>
-            <h5 class="text-danger mt-1" style="font-weight: bold;">Checkout</h5>
-            <div style="background-color: rgba(255, 0, 0, 0.315); padding: 5px;">
-                <h4>5600</h4>
-            </div>
-            <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
-            </div>
-            </div>
-    </div>
-
-    <div class="col-md-3 mt-2">
-        <div class="card shadow" style="border-radius: 5px !important;">
-            <div class="p-3">
-                <p class="mt-2" style="color: chocolate; font-size: 18px; font-weight: bold; border-bottom: 1px solid rgb(177, 173, 173);">ROOM 5</p>
-                
-            <h5 class="text-success mt-1" style="font-weight: bold;">Checkin</h5>
-            <div style="background-color: rgba(0, 255, 13, 0.315); padding: 5px;">
-                <h4 class="" >5600</h4>
-            </div>
-            <h5 class="text-danger mt-1" style="font-weight: bold;">Checkout</h5>
-            <div style="background-color: rgba(255, 0, 0, 0.315); padding: 5px;">
-                <h4>5600</h4>
-            </div>
-            <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
-            </div>
-            </div>
-    </div>
-    
+    {% endfor %}
     <!-- <div class="col-md-6 mt-2">
         <div class="card shadow">
             <div class="p-3">
@@ -260,14 +182,14 @@
 
 <div class="col-md-12">
 <label>New Room Name</label>
-<input type="text" class="form-control">
+<input type="text" id="room-name-inp" class="form-control">
 </div>
 
 </div>
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-success">Add Room</button>
+            <button type="button" class="btn btn-success" id="add-room-submit-btn">Add Room</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           
         </div>
@@ -276,19 +198,92 @@
   </div>
 
 
-<!-- modal end here -->
-
-
   <script src="{% static 'vendors/js/vendor.bundle.base.js' %}"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="{% static 'js/off-canvas.js' %}"></script>
-  <script src="{% static 'js/hoverable-collapse.js' %}"></script>
-  <script src="{% static 'js/template.js' %}"></script>
-  <script src="{% static 'js/settings.js' %}"></script>
-  <script src="{% static 'js/todolist.js' %}"></script>
+
+
+  <script>
+
+
+    setInterval(() => {
+      get_latest_dashboard_data()
+    }, 5000);
+
+    
+    function get_latest_dashboard_data() {
+      $.ajax({
+        type: "GET",
+        url: "{% url 'get-latest-admin-dashboard-page' %}",
+        dataType: "json",
+        success: function (response) {
+         
+          if (response.success){
+
+     
+
+          response.rooms.forEach(room => {
+            
+            let room_parent=$(`[room-id=${room.id}]`)
+            
+            
+            check_and_update(room_parent.find('#total-check-in'),room.total_check_in)
+            check_and_update(room_parent.find('#total-check-out'),room.total_check_out)
+            
+          });
+
+          check_and_update($('#admin-total-check-in'),response.total_entry.check_in)
+          check_and_update($('#admin-total-check-out'),response.total_entry.check_out)
+          
+        }
+
+        }
+      });
+
+    }
+
+    function check_and_update(elm,new_data) {
+      
+      old_data=elm.text()
+      
+      if (old_data != new_data.toString()){
+        elm.delay(100).fadeOut().fadeIn('slow')
+        setTimeout(() => {
+          elm.html(new_data)
+        }, 400);
+        
+        
+      }
+
+    }
+
+  </script>
+  <script>
+  
+  $('#add-room-submit-btn').click(function () {
+      let room_name = $('#room-name-inp').val()
+      
+      if (room_name == '' ){
+        alert('please fil room name input')
+        return false
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "{% url 'add-room-in-dashboard' %}",
+        data: {"room-name":room_name,'csrfmiddlewaretoken':'{{csrf_token}}'},
+        dataType: "json",
+        success: function (response) {
+          
+          if (response.success){
+            $('#room-name-inp').val('')
+            window.location.reload()
+
+          }
+
+        }
+      });
+    })
+  
+  </script>
   <!-- endinject -->
 </body>
 

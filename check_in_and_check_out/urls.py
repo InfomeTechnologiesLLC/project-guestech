@@ -8,5 +8,7 @@ urlpatterns = [
     
     path('admin-dashboard',views.admin_dashboards_page,name='admin-dashboard-page'),
     path('get-latest-admin-dashboard',views.get_admin_dashboard_latest_data,name='get-latest-admin-dashboard-page'),
-    path('add-room-in-dashboard',views.add_room,name='add-room-in-dashboard')
+    path('add-room-in-dashboard',views.add_room,name='add-room-in-dashboard'),
+    
+    path('show-list',views.check_in_out_list_page,name='check-in-and-out-list-page')
 ]

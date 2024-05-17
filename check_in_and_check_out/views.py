@@ -3,8 +3,9 @@ from django.http import JsonResponse
 from check_in_and_check_out.models import *
 from portal.models import EventRegistrations 
 import json
+from django.contrib.auth.decorators import login_required
 # Create your views here.
-
+@login_required
 def volunteer_page(request):
 
     return render(request,'volunteer-page.html')
@@ -79,6 +80,7 @@ def get_admin_dashboard_latest_data(request):
         res['success']=False
         
     return JsonResponse(res)
+@login_required
 def admin_dashboards_page(request):
     res=get_admin_dashboard_data()
     return render(request,'admin-page.html',res)
@@ -94,3 +96,20 @@ def add_room(request):
         print(e)
         res['success']=False
     return JsonResponse(res)
+
+@login_required
+def check_in_out_list_page(request):
+    
+    room_id=request.GET.get('room-id')
+    
+    entry_logs=EntryLog.objects.filter(active=True)
+    
+    room=None
+    if room_id:
+        room=Rooms.objects.get(id=room_id)
+        entry_logs=entry_logs.filter(room=room)
+
+
+    context={'room':room,'entry_logs':entry_logs}
+    
+    return render(request,'check-in-out-list.html',context)
