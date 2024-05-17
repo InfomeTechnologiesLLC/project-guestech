@@ -14,7 +14,6 @@ def check_in_and_check_out_entry(request):
     room_id=request.POST.get('room-id')
     
     evp_id=str(evp_id).replace('EVP-','')
-    print(evp_id,room_id)
     res={}
     try:
         
@@ -48,6 +47,50 @@ def get_latest_dashboard_data(request):
 
     return JsonResponse(res)
 
+##admin page
 
-def admin_page(request):
-    return render(request,'admin-page.html')
+
+def get_admin_dashboard_data():
+    rooms=Rooms.objects.filter(active=True)
+    total_entries=EntryLog.objects.filter(active=True)
+    res={'rooms':[]}
+    for room in rooms:
+        room_entries=total_entries.filter(room=room)
+
+        res['rooms'].append({
+            'id':room.id,
+            'name':room.name,
+            'total_check_in':room_entries.filter(entry_status=1).count(),
+            'total_check_out':room_entries.filter(entry_status=2).count(),
+            
+        })
+
+    res['total_entry']={'check_in':total_entries.filter(entry_status=1).count(),'check_out':total_entries.filter(entry_status=2).count()}    
+    return res
+
+def get_admin_dashboard_latest_data(request):
+    res={'success':False}
+    try:
+        
+        res=get_admin_dashboard_data()
+        res['success']=True
+    except Exception as e:
+        print(e)
+        res['success']=False
+        
+    return JsonResponse(res)
+def admin_dashboards_page(request):
+    res=get_admin_dashboard_data()
+    return render(request,'admin-page.html',res)
+def add_room(request):
+    name=request.POST.get('room-name')
+    
+    res={'success':False}
+    try:
+        Rooms.objects.create(name=name)
+        res['success']=True
+        
+    except Exception as e:
+        print(e)
+        res['success']=False
+    return JsonResponse(res)

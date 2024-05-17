@@ -23,6 +23,7 @@
   href="{% static 'css/mystyle.css' %}"
  
 />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 
@@ -64,18 +65,7 @@
 
 <div class="col-md-6">
 <div class="row">
-<div class="col-md-6 mt-2">
-    <div class="card shadow" style="border-radius: 5px !important;">
-        <div class="p-3">
-            <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
-        <h4 class="text-primary mt-1" style="font-weight: bold;">Total Entry</h4>
-        <div style="background-color: rgba(0, 0, 255, 0.315); padding: 10px;">
-            <h3>1000</h3>
-        </div>
-        <p class="text-muted mt-2 dashboard-room-name"></p>
-        </div>
-        </div>
-</div>
+
 
 <div class="col-md-6 mt-2">
     <div class="card shadow" style="border-radius: 5px !important;">
@@ -207,16 +197,22 @@
         }
     });
 
+    let last_check_id=''
     function addEntry(sCode) {
+        if (last_check_id == sCode){
+            console.log('already checked');
+        }else{
+            last_check_id=sCode
+        }
         _data={'room-id':room_id,'check-status':check_status,'evp-id':sCode,'csrfmiddlewaretoken':'{{csrf_token}}'}
             
-            $.ajax({
+         $.ajax({
                 type: "POST",
                 url: "{% url 'check-in-and-check-out-entry' %}",
                 data: _data,
                 dataType: "json",
                 success: function (response) {
-                    console.log(response)
+                 
                     if (response.status){
 
                         $('#success-div').removeClass('d-none')
@@ -224,12 +220,27 @@
                     
                         $('#scanned-id-name').text(response.registration.name)
                         $('#scanned-room-name').text(response.room.name)
+                    }else{
+                          Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            title: "Card is not valid",
+                            showConfirmButton: false,
+                            timer: 1000
+                            });
                     }
                     setTimeout(() => {
                             $('#scanning-div').removeClass('d-none')
                             $('#success-div').addClass('d-none')
                     }, 5000);
-                }
+                },
+                error : function (error) {
+                    Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Please check the internet connection",
+                    });
+                 }
             });
     }
 
@@ -249,8 +260,12 @@
             success: function (response) {
                
                 if (response.success){
-                    $('#total-check-out').text(response.entries['total-check-out'])
-                    $('#total-check-in').text(response.entries['total-check-in'])
+
+
+                    check_and_update( $('#total-check-out'),response.entries['total-check-out'])
+                    check_and_update( $('#total-check-in'),response.entries['total-check-in'])
+
+
                     if (loading_first){
                         $('.dashboard-room-name').text(response.room['name'])
                         let roomname=''
@@ -266,6 +281,22 @@
         });
     }
     
+
+    function check_and_update(elm,new_data) {
+      
+      old_data=elm.text()
+      
+      if (old_data != new_data.toString()){
+        elm.delay(100).fadeOut().fadeIn('slow')
+  
+        setTimeout(() => {
+          elm.html(new_data)
+        }, 400);
+        
+        
+      }
+
+    }
 
 
     if (document.addEventListener)
@@ -290,7 +321,7 @@
     } else {
         $('#on-click-fullscreen').html('Open Fullscreen  <svg xmlns="http://www.w3.org/2000/svg" style="width: 12px;" class="mx-1" viewBox="0 0 448 512"><path fill="#ffffff" d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z"/></svg>')
         if (on_system == false){
-            document.getElementById('body-container').requestFullscreen()
+            document.body.requestFullscreen()
         }
        
     }
