@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from check_in_and_check_out.models import *
 # Create your models here.
 
 class userRole(models.Model):
@@ -120,7 +120,7 @@ class EventRegistrations(models.Model):
     last_name=models.TextField()
     company=models.TextField(null=True)
     # jobtitle=models.TextField(null=True)
-    cardtype=models.ForeignKey(EventCardType, on_delete=models.CASCADE)
+    cardtype=models.ForeignKey(EventCardType , on_delete=models.CASCADE)
     dob=models.DateField(null=True)
     nationality=models.TextField(null=True)
     mobile=models.TextField(null=True)
@@ -158,7 +158,9 @@ class EventRegistrations(models.Model):
 
 class daysTable(models.Model):
     name=models.CharField(max_length=50)
+    date=models.DateField(null=True)
+    entries=models.ManyToManyField(EntryLog,null=True)
     active=models.BooleanField(default=True)
     
     class Meta:
-        db_table='event_daystable'
+        db_table='event_days'

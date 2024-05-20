@@ -1,5 +1,5 @@
 from django.db import models
-from portal.models import EventRegistrations 
+
 # Create your models here.
 
 class Rooms(models.Model):
@@ -12,7 +12,8 @@ class Rooms(models.Model):
 class EntryLog(models.Model):
     #check in = 1 check out = 2
     entry_status=models.IntegerField(null=False)
-    registration=models.ForeignKey(EventRegistrations,on_delete=models.CASCADE)
+    registration=models.ForeignKey('portal.EventRegistrations',on_delete=models.CASCADE)
+    #day=models.ForeignKey(daysTable,on_delete=models.CASCADE,null=True,related_name='day')
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     active=models.BooleanField(default=True)

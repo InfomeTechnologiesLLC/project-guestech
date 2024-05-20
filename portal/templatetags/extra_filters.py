@@ -13,4 +13,11 @@ def check_is_pdf(file):
         return True
     else:
         return False
-    
+
+@register.filter()
+def check_day_attended(day,registration):
+
+    if day.entries.filter(registration = registration).exists():
+        return True
+    else:
+        return False

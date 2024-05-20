@@ -1,4 +1,6 @@
               {% load static %}
+
+            {% load extra_filters %}
            
                <tr class="reg-tr" id="reg-{{r.id}}" reg-id="{{r.id}}">
                
@@ -30,8 +32,10 @@
          
                   {% for d in r.days.all %}
 
-                      <span class="badge badge-secondary text-white mb-1">{{d.name}}</span><br>
+                      <span class="badge  text-white mb-1 {% if d|check_day_attended:r  %} badge-success {% else %} badge-secondary {% endif %}">{{d.name}}</span><br>
 
+                      
+                      
                   {% endfor %}
   
                   {% if r.days.all.count == 0 %} <span class="text-muted"> No day</span>  {% endif %}

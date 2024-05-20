@@ -37,7 +37,7 @@
 
 
 <div class="container">
-<div class="row">
+<div class="row justify-content-between">
 
 <div class="col-md-3">
     <img class="img-fluid" src="{% static 'images/guestech/logo1.png' %}" style="width: 100%;">
@@ -45,8 +45,7 @@
 
 <div class="col-md-8">
 
-
-<div class="d-flex flex-row bd-highlight mb-3 mt-2" style="float: right; background-color: #a1fffe33;">
+  <div class="d-flex bd-highlight mt-2" style="float: right; background-color: #a1fffe33;">
    
     <div class="p-2 bd-highlight"><img class="img-fluid " src="https://tcap.pbworks.com/f/1435170280/myAvatar.png" style="width: 35px; border-radius: 50%;"></div>
     <div class="p-1 bd-highlight mt-3 pr-2" style="font-size: 12px; font-weight: bold;">ADMIN</div>
@@ -78,8 +77,10 @@
 
 </div>
 <div class="col-md-6">
-    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;">Add Room</button>
-</div>
+
+  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter" style="float: right;">Add Room</button>
+
+  </div>
 
     <div class="col-md-12">
     <div class="row">
@@ -90,11 +91,11 @@
                     
                 <h5 class="text-success mt-1" style="font-weight: bold;">Checkin</h5>
                 <div style="background-color: rgba(0, 255, 13, 0.315); padding: 5px;">
-                    <h4 class="" id="admin-total-check-in" >5600</h4>
+                    <h4 class="" id="admin-total-check-in" >{{total_entry.check_in}}</h4>
                 </div>
                 <h5 class="text-danger mt-1" style="font-weight: bold;">Checkout</h5>
                 <div style="background-color: rgba(255, 0, 0, 0.315); padding: 5px;">
-                    <h4 id="admin-total-check-out">5600</h4>
+                    <h4 id="admin-total-check-out">{{total_entry.check_out}}</h4>
                 </div>
                 <span class="text-muted" style="font-size: 10px; ">Guestech 2024</span>
                 </div>
@@ -105,10 +106,14 @@
     
     <div class="col-md-3 mt-2" room-id="{{room.id}}">
         <div class="card shadow" style="border-radius: 5px !important;">
-            <div class="p-3">
-                <p class="mt-2" style="color: slateblue; font-size: 18px; font-weight: bold; border-bottom: 1px solid rgb(177, 173, 173);">{{room.name}}</p>
-                
+            <div class="p-3" >
+            <div class="d-flex justify-content-between" style="border-bottom: 1px solid rgb(177, 173, 173);">
+              <p class="mt-2" style="color: slateblue; font-size: 18px; font-weight: bold; ">{{room.name}}</p>
+              <a  class="btn btn-secondary btn-sm my-2 text-white" href="{% url 'check-in-and-out-report-page' room.id %}">view report</a>
+            </div>    
+              
             <h5 class="text-success mt-1" style="font-weight: bold;">Checkin</h5>
+
             <div style="background-color: rgba(0, 255, 13, 0.315); padding: 5px;">
                 <h4 class="" id="total-check-in">{{room.total_check_in}}</h4>
             </div>

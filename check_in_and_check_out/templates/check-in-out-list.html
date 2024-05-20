@@ -27,7 +27,7 @@
 
 
 <style>
-  table {   
+  /* table {   
   counter-reset: rowNumber;
   }
   tbody tr {
@@ -40,7 +40,7 @@
   table tbody{
     overflow: auto;
   height: 100px;
-  }
+  } */
 </style>
 </head>
 
@@ -63,8 +63,10 @@
 </div>
 
 <div class="col-md-8">
-    <a href="{% url 'logout' %}" class="btn btn-danger mt-4" style="float: right;">LOGOUT <img src="{% static 'images/guestech/power-off.png' %}" style="margin-top:-3px;"></a>
-
+  
+  <a href="{% url 'logout' %}" class="btn btn-danger mt-4" style="float: right;">LOGOUT <img src="{% static 'images/guestech/power-off.png' %}" style="margin-top:-3px;"></a>
+  <a href="{% url 'admin-dashboard-page' %}" class="btn btn-warning mt-4 mx-1 text-white" style="float: right;">Dashboard </a>
+ 
 </div>
 
 
@@ -80,9 +82,9 @@
         <div class="col-md-6"><h4 class="ml-3 mt-5">ROOM 1 REPORT</h4></div>
         <div class="col-md-6 mt-5">
 <div style="float: right;">
-<button class="btn btn-sm btn-outline-warning">All</button>
-<button class="btn btn-sm btn-outline-success">Checkin</button>
-<button class="btn btn-sm btn-outline-danger">Checkout</button>
+<button class="btn btn-sm btn-outline-warning filter-check-btn" check="all">All</button>
+<button class="btn btn-sm btn-outline-success filter-check-btn" check="in">Check in</button>
+<button class="btn btn-sm btn-outline-danger filter-check-btn" check="out">Check out</button>
 </div>
         </div>
 
@@ -102,12 +104,26 @@
           </tr>
         </thead>
         <tbody >
-          {% for entry in entry_logs %}
+          {% for entry in entry_report %}
           <tr>
-            <th scope="row" class="counter"></th>
-            <td>{{entry.registration.get_name}}</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row" class="counter">EVP-{{entry.reg_id}}</th>
+            <td>{{entry.reg.get_name}}</td>
+            <td>
+              {% if entry.in %}
+              {{entry.in|date:'d-m-Y'}} at {{entry.in|date:'H:i A'}}
+              {% else %}
+              <p class="badge badge-warning">Not yet</p>
+              {% endif %}
+            </td>
+            
+            <td>
+              {% if entry.out %}
+              {{entry.out|date:'d-m-Y'}} at {{entry.out|date:'H:i A'}}
+              
+              {% else %}
+              <p class="badge badge-warning">Not yet</p>
+              {% endif %}
+            </td>
           </tr>
           {% endfor %}
       
@@ -145,6 +161,29 @@
   <script src="{% static 'js/settings.js' %}"></script>
   <script src="{% static 'js/todolist.js' %}"></script>
   <!-- endinject -->
+
+  <script>
+    let _urlParams=new URLSearchParams(window.location.search) 
+    $('.filter-check-btn').click(function(){
+      _urlParams.set('filter-check',$(this).attr('check'))
+      window.location.search=_urlParams
+    })
+    
+    if (_urlParams.get('filter-check') == undefined ||_urlParams.get('filter-check') == '' ){
+      $("[check='all']").addClass('active')
+    }
+
+    $('.filter-check-btn').each(function (){
+      console.log(_urlParams.get('filter-check'),$(this).text());
+      if ($(this).attr('check') == _urlParams.get('filter-check')){
+        $(this).addClass('active')
+      }
+    
+      
+    })
+    
+
+  </script>
 </body>
 
  

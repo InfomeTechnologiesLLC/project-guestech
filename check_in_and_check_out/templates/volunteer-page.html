@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>INFOEVENTZ-LOGIN</title>
+  <title>INFOEVENTZ VOLUNTEER</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{% static 'vendors/feather/feather.css' %}">
   <link rel="stylesheet" href="{% static 'vendors/ti-icons/css/themify-icons.css' %}">
@@ -127,7 +127,7 @@
 </div>
 <div class="p-3 ">
 <h2 class="text-center" id="scanned-id-name">Name</h2>
-<h3 class="text-center text-success">Successfully Checkin To <p id="scanned-room-name"></p></h3>
+<h3 class="text-center text-success">Successfully <div class="room_status_name"></div> To <p id="scanned-room-name"></p></h3>
 
 
 </div>
@@ -227,10 +227,10 @@
                           Swal.fire({
                             position: "center",
                             icon: "error",
-                            title: "Card is not valid",
+                            title:response.reason != '' ? response.reason : "Card is not valid",
                             showConfirmButton: false,
                             timer: 1000
-                            });
+                        });
                     }
                     setTimeout(() => {
                             $('#scanning-div').removeClass('d-none')
@@ -271,13 +271,14 @@
 
                     if (loading_first){
                         $('.dashboard-room-name').text(response.room['name'])
-                        let roomname=''
+                        let room_status_name=''
                         if (check_status == 1){
-                            roomname='Check In'
+                            room_status_name='Check In'
                         }else{
-                            roomname='Check Out'
+                            room_status_name='Check Out'
                         }
-                        $('#page-identifier').text(`${response.room['name']} ${roomname}`)
+                        $('.room_status_name').text(room_status_name)
+                        $('#page-identifier').text(`${response.room['name']} ${room_status_name}`)
                     }
                 }
             }
