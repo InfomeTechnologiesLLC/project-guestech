@@ -229,7 +229,7 @@
                             icon: "error",
                             title:response.reason != '' ? response.reason : "Card is not valid",
                             showConfirmButton: false,
-                            timer: 1000
+                            timer: 3000
                         });
                     }
                     setTimeout(() => {
@@ -242,6 +242,7 @@
                     position: "center",
                     icon: "error",
                     title: "Please check the internet connection",
+                    timer: 3000
                     });
                  }
             });
