@@ -19,7 +19,7 @@ def check_in_and_check_out_entry(request):
     entry_status=int(request.POST.get('check-status'))
     room_id=request.POST.get('room-id')
     
-    evp_id=str(evp_id).replace('EVP-','')
+    evp_id=str(evp_id).replace('EVP','')
     res={}
     try:
         
