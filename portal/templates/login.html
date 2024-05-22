@@ -141,7 +141,7 @@
 </div>
 <div class="row mt-5">
 <div class="col-md-12">
-<button class="btn btn-secondary w-100 text-white" id="volunteer-config-submit">Submit</button>
+<button class="btn btn-secondary w-100 text-white" id="volunteer-config-submit" onclick="submitVolunteerConfig()">Submit</button>
 </div>
 </div>
 
@@ -259,16 +259,19 @@
     if(e.which == 13) {
         validate_login();
     }
-
-    $('#volunteer-config-submit').click(function (){
+    
+    function submitVolunteerConfig() {
       
-
       console.log($('.check_btn.active').attr('status'),$('#volunteer-select').val());
       localStorage.setItem('room-id',$('#volunteer-select').val())
       localStorage.setItem('check-id',$('.check_btn.active').attr('status'))
       window.location.replace(_url)
+    }
+    // $('#volunteer-config-submit').click(function (){
+      
 
-    })
+
+    // })
 });
 </script>
 </html>
