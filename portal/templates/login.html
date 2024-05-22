@@ -260,18 +260,19 @@
         validate_login();
     }
     
-    function submitVolunteerConfig() {
-      
-      console.log($('.check_btn.active').attr('status'),$('#volunteer-select').val());
-      localStorage.setItem('room-id',$('#volunteer-select').val())
-      localStorage.setItem('check-id',$('.check_btn.active').attr('status'))
-      window.location.replace(_url)
-    }
+  
     // $('#volunteer-config-submit').click(function (){
       
 
 
     // })
 });
+function submitVolunteerConfig() {
+      
+      console.log($('.check_btn.active').attr('status'),$('#volunteer-select').val());
+      localStorage.setItem('room-id',$('#volunteer-select').val())
+      localStorage.setItem('check-id',$('.check_btn.active').attr('status'))
+      window.location.replace(_url)
+}
 </script>
 </html>
